@@ -12,4 +12,6 @@ protocol MapInteractorInput {
    
    func getRandomPlace()
    
+   func getPlaces()
+   
 }

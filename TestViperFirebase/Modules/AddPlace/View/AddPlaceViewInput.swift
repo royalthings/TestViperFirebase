@@ -16,4 +16,6 @@ protocol AddPlaceViewInput: class {
    func setupInitialState()
 
    func showError(title: String, message: String)
+   
+   func addNewCoordinate(latitude: String, longitude: String)
 }

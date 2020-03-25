@@ -16,4 +16,10 @@ class MapInteractor: MapInteractorInput {
          self.output.displayRandomPlace(places)
       }
    }
+   
+   func getPlaces() {
+      dataManager.getPlaces { (places) in
+         self.output.savePlaces(places)
+      }
+   }
 }

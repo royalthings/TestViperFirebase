@@ -40,6 +40,8 @@ class MapModuleConfigurator {
       let presenter = MapPresenter()
       let interactor = MapInteractor()
       
+      router.viewController = viewController
+      
       presenter.view = viewController
       presenter.router = router
       

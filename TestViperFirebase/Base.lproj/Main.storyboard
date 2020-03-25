@@ -31,7 +31,7 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7uy-ho-9a8">
                                 <rect key="frame" x="132" y="422" width="150" height="45"/>
-                                <color key="backgroundColor" red="0.90588235289999997" green="0.30980392159999998" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="bSC-kB-VQV"/>
                                     <constraint firstAttribute="height" constant="45" id="pJy-ZV-LCO"/>
@@ -271,7 +271,7 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NP7-p1-gXd">
                                         <rect key="frame" x="147" y="420" width="120" height="45"/>
-                                        <color key="backgroundColor" red="0.90588235289999997" green="0.30980392159999998" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="T4O-AK-Dhx"/>
                                             <constraint firstAttribute="width" constant="120" id="ohC-yt-DhH"/>
@@ -326,7 +326,7 @@
                     </connections>
                 </customObject>
             </objects>
-            <point key="canvasLocation" x="2586" y="64"/>
+            <point key="canvasLocation" x="2717" y="82"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -587,7 +587,7 @@
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tRf-86-IGz">
                                         <rect key="frame" x="147" y="343" width="120" height="45"/>
-                                        <color key="backgroundColor" red="0.90588235289999997" green="0.30980392159999998" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="e0v-lw-3fh"/>
                                             <constraint firstAttribute="width" constant="120" id="maP-VT-cm5"/>
@@ -687,7 +687,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9bW-Pw-lyV">
                                         <rect key="frame" x="0.0" y="0.0" width="314" height="45"/>
-                                        <color key="backgroundColor" red="0.90588235289999997" green="0.30980392159999998" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="5uY-2K-9cP"/>
                                         </constraints>
@@ -701,7 +701,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Wf-0B-lCO">
                                         <rect key="frame" x="0.0" y="82" width="314" height="45"/>
-                                        <color key="backgroundColor" red="0.90588235289999997" green="0.30980392159999998" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="Aun-zG-YTR"/>
                                         </constraints>
@@ -840,6 +840,7 @@
                     <navigationItem key="navigationItem" id="P8B-FU-VWb"/>
                     <connections>
                         <outlet property="placeMapView" destination="bnq-uq-uCw" id="Jxo-bf-42E"/>
+                        <segue destination="x5s-IF-TGV" kind="show" identifier="addPlaceFromMap" id="rcV-bS-zmm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QKj-d7-Uc6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -859,5 +860,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="T69-OX-HXg"/>
+        <segue reference="rcV-bS-zmm"/>
     </inferredMetricsTieBreakers>
 </document>

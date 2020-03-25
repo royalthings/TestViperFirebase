@@ -18,7 +18,9 @@ protocol MapViewInput: class {
    
    func displayPlaceOnMap(_ placeModel: Place)
    
-   func centerMapOnLocation(location: CLLocation)
+   func centerMapOnLocation(locationCoordinate: CLLocationCoordinate2D)
    
    func displayRandomPlace(_ place: Place)
+   
+   func savePlaces(_ place: [Place])
 }

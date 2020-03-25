@@ -11,5 +11,7 @@ import Foundation
 protocol MapInteractorOutput: class {
    
    func displayRandomPlace(_ places: [Place])
+   
+   func savePlaces(_ places: [Place])
 
 }

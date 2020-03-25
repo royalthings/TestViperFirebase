@@ -9,7 +9,7 @@
 import UIKit
 
 class AddPlaceViewController: UIViewController, AddPlaceViewInput {
- 
+
    @IBOutlet weak var nameTextField: UITextField!
    @IBOutlet weak var disciplineTextField: UITextField!
    @IBOutlet weak var latitudeTextField: UITextField!
@@ -17,6 +17,8 @@ class AddPlaceViewController: UIViewController, AddPlaceViewInput {
    @IBOutlet weak var addButton: UIButton!
    
    var output: AddPlaceViewOutput!
+   var latitude: String?
+   var longitude: String?
    
    // MARK: Life cycle
    override func viewDidLoad() {
@@ -24,6 +26,9 @@ class AddPlaceViewController: UIViewController, AddPlaceViewInput {
       output.viewIsReady()
       
       addButton.layer.cornerRadius = 10
+      
+      latitudeTextField.text = latitude
+      longitudeTextField.text = longitude
    } 
    
    // MARK: AddPlaceViewInput
@@ -52,5 +57,11 @@ class AddPlaceViewController: UIViewController, AddPlaceViewInput {
       let alertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
       alertController.addAction(alertAction)
       self.present(alertController, animated: true, completion: nil)
-   } 
+   }
+   
+   func addNewCoordinate(latitude: String, longitude: String) {
+      self.latitude = latitude
+      self.longitude = longitude
+   
+   }
 }

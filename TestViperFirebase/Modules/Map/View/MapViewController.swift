@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 
 class MapViewController: UIViewController, MapViewInput {
-   
+
    @IBOutlet weak var placeMapView: MKMapView!
    
    fileprivate let locationManager = CLLocationManager()
@@ -18,6 +18,9 @@ class MapViewController: UIViewController, MapViewInput {
    fileprivate let regionRadius: Double = 500.0
    fileprivate var destLatitude: CLLocationDegrees?
    fileprivate var destLongitude: CLLocationDegrees?
+   
+   var places: [Place] = []
+   var newCoordinate: CLLocationCoordinate2D!
    
    var place: Place!
    var output: MapViewOutput!
@@ -28,11 +31,36 @@ class MapViewController: UIViewController, MapViewInput {
       output.viewIsReady()
       
       locationManager.delegate = self
+      
+      longPress()
+   }
+
+   fileprivate func longPress() {
+      let longPress = UILongPressGestureRecognizer(target: self, action: #selector(mapLongPress(_:)))
+      longPress.minimumPressDuration = 1
+      placeMapView.addGestureRecognizer(longPress)
+   }
+   
+   @objc func mapLongPress(_ recognizer: UIGestureRecognizer) {
+      removePin()
+      place = nil
+      let touchedAt = recognizer.location(in: placeMapView)
+      let touchedAtCoordinate: CLLocationCoordinate2D = placeMapView.convert(touchedAt, toCoordinateFrom: placeMapView)
+      let newPin = MKPointAnnotation()
+      newCoordinate = touchedAtCoordinate
+      newPin.coordinate = touchedAtCoordinate
+      newPin.title = "Do you want to add a new place?"
+      placeMapView.addAnnotation(newPin)
+      centerMapOnLocation(locationCoordinate: touchedAtCoordinate)
    }
 
    // MARK: MapViewInput
    func setupInitialState() {
       
+   }
+   
+   func savePlaces(_ place: [Place]) {
+      places = place
    }
    
    func displayPlaceOnMap(_ placeModel: Place) {
@@ -45,10 +73,9 @@ class MapViewController: UIViewController, MapViewInput {
          self.destLongitude = longitude
          
          let initialLocation = CLLocation(latitude: latitude, longitude: longitude)
-         self.centerMapOnLocation(location: initialLocation)
+         self.centerMapOnLocation(locationCoordinate: initialLocation.coordinate)
          
          self.placeMapView.addAnnotation(self.place)
-
       }
    }
    
@@ -73,31 +100,20 @@ class MapViewController: UIViewController, MapViewInput {
    
    @IBAction func centerMapAction(_ sender: Any) {
       if let location = locationManager.location {
-         centerMapOnLocation(location: location)
+         centerMapOnLocation(locationCoordinate: location.coordinate)
       }
    }
    
    //MARK: - MapView
    
-   func centerMapOnLocation(location: CLLocation) {
-      let coordinateRegion = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
+   func centerMapOnLocation(locationCoordinate: CLLocationCoordinate2D) {
+      let coordinateRegion = MKCoordinateRegion(center: locationCoordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
       placeMapView.setRegion(coordinateRegion, animated: true)
    }
    
-//   func foundTap(_ recognizer: UITapGestureRecognizer) {
-//      let point: CGPoint = recognizer.location(in: placeMapView)
-//      let tapPoint: CLLocationCoordinate2D = placeMapView.convert(point, toCoordinateFrom: view)
-//      let point1 = MKPointAnnotation()
-//      point1.coordinate = tapPoint
-//      placeMapView.addAnnotation(point1)
-//      let getLat: CLLocationDegrees = tapPoint.latitude
-//      let getLon: CLLocationDegrees = tapPoint.longitude
-//      let locationTouch: CLLocation =  CLLocation(latitude: getLat, longitude: getLon)
-//      
-//      print(getLat)
-//      print(getLon)
-//      //       coordinateToAdress(locationTouch)
-//   }
+   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+      output.prepare(segue)
+   }
 }
 
 //MARK: - MKMapViewDelegate
@@ -108,34 +124,48 @@ extension MapViewController: MKMapViewDelegate {
       }
       let identifire = "annotationView"
       var view: MKAnnotationView
+      
+      let mapButton = UIButton(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 30, height: 30)))
+      
       if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifire) {
          dequeuedView.image = UIImage(named: "iconsPin50")
          dequeuedView.annotation = annotation
          view = dequeuedView
+
+         //add custom annotation button
+         if place == nil {
+            for element in places {
+               if newCoordinate.latitude != element.coordinate.latitude && newCoordinate.longitude != element.coordinate.longitude {
+                  mapButton.setBackgroundImage(UIImage(named: "plus"), for: .normal)
+               } else {
+                  mapButton.setBackgroundImage(UIImage(named: "Maps-icon"), for: .normal)
+               }
+            }
+         } else {
+            mapButton.setBackgroundImage(UIImage(named: "Maps-icon"), for: .normal)
+         }
+         
+         view.rightCalloutAccessoryView = mapButton
       } else {
          view = MKAnnotationView(annotation: annotation, reuseIdentifier: identifire)
          view.image = UIImage(named: "iconsPin50")
          view.canShowCallout = true
          
          //add custom annotation button
-         let mapButton = UIButton(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 30, height: 30)))
          mapButton.setBackgroundImage(UIImage(named: "Maps-icon"), for: .normal)
          view.rightCalloutAccessoryView = mapButton
       }
-      // add long detail
-      let detailLabel = UILabel()
-      detailLabel.numberOfLines = 0
-      detailLabel.font = detailLabel.font.withSize(12)
-      detailLabel.text = place.discipline
-      view.detailCalloutAccessoryView = detailLabel
-      
       return view
    }
    
    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-      let location = view.annotation as! Place
-      let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
-      location.mapItem().openInMaps(launchOptions: launchOptions)
+      if place != nil {
+         let location = view.annotation as! Place
+         let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
+         location.mapItem().openInMaps(launchOptions: launchOptions)
+      } else {
+         output.addNewPlace()
+      }
    }
 }
 
@@ -147,7 +177,7 @@ extension MapViewController: CLLocationManagerDelegate {
       case .authorizedWhenInUse:
          placeMapView.showsUserLocation = true
          if let location = locationManager.location {
-            centerMapOnLocation(location: location)
+            centerMapOnLocation(locationCoordinate: location.coordinate)
          }
          locationManager.startUpdatingLocation()
          print("Location status is OK.")

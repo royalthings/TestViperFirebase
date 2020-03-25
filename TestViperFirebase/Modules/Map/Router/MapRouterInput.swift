@@ -6,8 +6,12 @@
 //  Copyright © 2020 TestViperFirebase. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol MapRouterInput {
+   
+   func goToAddNewPlaceScreen()
+   
+   func prepare(_ segue: UIStoryboardSegue)
 
 }

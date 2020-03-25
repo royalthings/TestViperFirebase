@@ -32,4 +32,8 @@ class AddPlacePresenter: AddPlaceModuleInput, AddPlaceViewOutput, AddPlaceIntera
          view.showError(title: "Error", message: "Еnter correct data")
       }
    }
+   
+   func addNewCoordinate(latitude: String, longitude: String) {
+      view.addNewCoordinate(latitude: latitude, longitude: longitude)
+   }
 }
