@@ -23,4 +23,6 @@ protocol MapViewOutput {
    func addNewPlace()
    
    func prepare(_ segue: UIStoryboardSegue)
+   
+   func featchAllPlaces()
 }

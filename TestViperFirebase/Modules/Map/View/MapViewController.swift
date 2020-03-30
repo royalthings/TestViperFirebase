@@ -34,6 +34,12 @@ class MapViewController: UIViewController, MapViewInput {
       
       longPress()
    }
+   
+   override func viewDidAppear(_ animated: Bool) {
+       super.viewDidAppear(animated)
+       
+       setupInitialState()
+   }
 
    fileprivate func longPress() {
       let longPress = UILongPressGestureRecognizer(target: self, action: #selector(mapLongPress(_:)))
@@ -56,7 +62,7 @@ class MapViewController: UIViewController, MapViewInput {
 
    // MARK: MapViewInput
    func setupInitialState() {
-      
+      output.featchAllPlaces()
    }
    
    func savePlaces(_ place: [Place]) {
@@ -125,7 +131,8 @@ extension MapViewController: MKMapViewDelegate {
       let identifire = "annotationView"
       var view: MKAnnotationView
       
-      let mapButton = UIButton(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 30, height: 30)))
+      let mapRightButton = UIButton(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 30, height: 30)))
+      let mapLeftButton = UIButton(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 30, height: 30)))
       
       if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifire) {
          dequeuedView.image = UIImage(named: "iconsPin50")
@@ -136,25 +143,27 @@ extension MapViewController: MKMapViewDelegate {
          if place == nil {
             for element in places {
                if newCoordinate.latitude != element.coordinate.latitude && newCoordinate.longitude != element.coordinate.longitude {
-                  mapButton.setBackgroundImage(UIImage(named: "plus"), for: .normal)
+                  mapRightButton.setBackgroundImage(UIImage(named: "plus"), for: .normal)
                } else {
-                  mapButton.setBackgroundImage(UIImage(named: "Maps-icon"), for: .normal)
+                  mapRightButton.setBackgroundImage(UIImage(named: "Maps-icon"), for: .normal)
                }
             }
          } else {
-            mapButton.setBackgroundImage(UIImage(named: "Maps-icon"), for: .normal)
+            mapRightButton.setBackgroundImage(UIImage(named: "Maps-icon"), for: .normal)
+            mapLeftButton.setBackgroundImage(UIImage(named: "info"), for: .normal)
+            view.leftCalloutAccessoryView = mapLeftButton
          }
-         
-         view.rightCalloutAccessoryView = mapButton
+         view.rightCalloutAccessoryView = mapRightButton
       } else {
          view = MKAnnotationView(annotation: annotation, reuseIdentifier: identifire)
          view.image = UIImage(named: "iconsPin50")
          view.canShowCallout = true
          
          //add custom annotation button
-         mapButton.setBackgroundImage(UIImage(named: "Maps-icon"), for: .normal)
-         view.rightCalloutAccessoryView = mapButton
+         mapRightButton.setBackgroundImage(UIImage(named: "Maps-icon"), for: .normal)
+         view.rightCalloutAccessoryView = mapRightButton         
       }
+      
       return view
    }
    

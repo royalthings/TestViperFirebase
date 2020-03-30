@@ -41,5 +41,9 @@ class MapPresenter: MapModuleInput, MapViewOutput, MapInteractorOutput {
    func prepare(_ segue: UIStoryboardSegue) {
       router.prepare(segue)
    }
+   
+   func featchAllPlaces() {
+      interactor.getPlaces()
+   }
 
 }
