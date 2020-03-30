@@ -13,5 +13,7 @@ protocol MapRouterInput {
    func goToAddNewPlaceScreen()
    
    func prepare(_ segue: UIStoryboardSegue)
+   
+   func goToDetailScreen()
 
 }

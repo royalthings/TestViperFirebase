@@ -25,4 +25,6 @@ protocol MapViewOutput {
    func prepare(_ segue: UIStoryboardSegue)
    
    func featchAllPlaces()
+   
+   func showDetail()
 }

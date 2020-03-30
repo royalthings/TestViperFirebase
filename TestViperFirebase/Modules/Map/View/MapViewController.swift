@@ -128,52 +128,95 @@ extension MapViewController: MKMapViewDelegate {
       if annotation is MKUserLocation {
          return nil
       }
-      let identifire = "annotationView"
-      var view: MKAnnotationView
       
+      var annotationView: MKAnnotationView!
+      let identifire = "annotationView"
+      let newIdentifire = "newAnnotationView"
+      var imageName = ""
+      
+      
+      
+      if place == nil {
+         for element in places {
+            if newCoordinate.latitude != element.coordinate.latitude && newCoordinate.longitude != element.coordinate.longitude {
+               imageName = "plus"
+            } else {
+               imageName = "Maps-icon"
+            }
+         }
+      } else {
+         imageName = "Maps-icon"
+      }
+      
+      if place == nil {
+         annotationView = addRightButtonAnnotation(mapView, annotation: annotation, identifire: newIdentifire, imageName: imageName)
+      } else {
+         annotationView = addRightAndLeftButtonAnnotation(mapView, annotation: annotation, identifire: identifire, imageName: imageName)
+      }
+      return annotationView
+   }
+   
+   fileprivate func addRightButtonAnnotation(_ mapView: MKMapView, annotation: MKAnnotation, identifire: String, imageName: String) -> MKAnnotationView {
       let mapRightButton = UIButton(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 30, height: 30)))
-      let mapLeftButton = UIButton(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 30, height: 30)))
+      
+      var view: MKAnnotationView
       
       if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifire) {
          dequeuedView.image = UIImage(named: "iconsPin50")
          dequeuedView.annotation = annotation
          view = dequeuedView
-
-         //add custom annotation button
-         if place == nil {
-            for element in places {
-               if newCoordinate.latitude != element.coordinate.latitude && newCoordinate.longitude != element.coordinate.longitude {
-                  mapRightButton.setBackgroundImage(UIImage(named: "plus"), for: .normal)
-               } else {
-                  mapRightButton.setBackgroundImage(UIImage(named: "Maps-icon"), for: .normal)
-               }
-            }
-         } else {
-            mapRightButton.setBackgroundImage(UIImage(named: "Maps-icon"), for: .normal)
-            mapLeftButton.setBackgroundImage(UIImage(named: "info"), for: .normal)
-            view.leftCalloutAccessoryView = mapLeftButton
-         }
+         mapRightButton.setBackgroundImage(UIImage(named: imageName), for: .normal)
          view.rightCalloutAccessoryView = mapRightButton
       } else {
          view = MKAnnotationView(annotation: annotation, reuseIdentifier: identifire)
          view.image = UIImage(named: "iconsPin50")
          view.canShowCallout = true
-         
-         //add custom annotation button
-         mapRightButton.setBackgroundImage(UIImage(named: "Maps-icon"), for: .normal)
-         view.rightCalloutAccessoryView = mapRightButton         
+         mapRightButton.setBackgroundImage(UIImage(named: imageName), for: .normal)
+         view.rightCalloutAccessoryView = mapRightButton
       }
-      
       return view
    }
    
-   func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-      if place != nil {
-         let location = view.annotation as! Place
-         let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
-         location.mapItem().openInMaps(launchOptions: launchOptions)
+   fileprivate func addRightAndLeftButtonAnnotation(_ mapView: MKMapView, annotation: MKAnnotation, identifire: String, imageName: String) -> MKAnnotationView {
+      let mapRightButton = UIButton(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 30, height: 30)))
+      let mapLeftButton = UIButton(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 30, height: 30)))
+      var view: MKAnnotationView
+      
+      if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifire) {
+         dequeuedView.image = UIImage(named: "iconsPin50")
+         dequeuedView.annotation = annotation
+         view = dequeuedView
+         mapRightButton.setBackgroundImage(UIImage(named: imageName), for: .normal)
+         view.rightCalloutAccessoryView = mapRightButton
+         
+         mapLeftButton.setBackgroundImage(UIImage(named: "info"), for: .normal)
+         view.leftCalloutAccessoryView = mapLeftButton
       } else {
-         output.addNewPlace()
+         view = MKAnnotationView(annotation: annotation, reuseIdentifier: identifire)
+         view.image = UIImage(named: "iconsPin50")
+         view.canShowCallout = true
+         mapRightButton.setBackgroundImage(UIImage(named: imageName), for: .normal)
+         view.rightCalloutAccessoryView = mapRightButton
+         
+         mapLeftButton.setBackgroundImage(UIImage(named: "info"), for: .normal)
+         view.leftCalloutAccessoryView = mapLeftButton
+      }
+      return view
+   }
+
+   
+   func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+      
+      if control == view.rightCalloutAccessoryView {
+         if place != nil {
+            let location = view.annotation as! Place
+            let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
+            location.mapItem().openInMaps(launchOptions: launchOptions)
+         } else {
+            output.addNewPlace()
+         }
+      } else if control == view.leftCalloutAccessoryView {
+         output.showDetail()
       }
    }
 }

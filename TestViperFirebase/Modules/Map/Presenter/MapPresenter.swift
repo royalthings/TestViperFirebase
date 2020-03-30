@@ -45,5 +45,9 @@ class MapPresenter: MapModuleInput, MapViewOutput, MapInteractorOutput {
    func featchAllPlaces() {
       interactor.getPlaces()
    }
+   
+   func showDetail() {
+      router.goToDetailScreen()
+   }
 
 }
