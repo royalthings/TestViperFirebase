@@ -9,7 +9,7 @@
 import UIKit
 
 class MainPresenter: MainModuleInput, MainViewOutput, MainInteractorOutput {
-   
+
    weak var view: MainViewInput!
    var interactor: MainInteractorInput!
    var router: MainRouterInput!
@@ -45,9 +45,29 @@ class MainPresenter: MainModuleInput, MainViewOutput, MainInteractorOutput {
    func deletePlace(_ placeId: String) {
       interactor.deletePlace(placeId)
    }
-   
+
    func isDelete(_ isDelete: Bool) {
       if isDelete {
+         view.setupInitialState()
+      }
+   }
+   
+   func selectPlaceAsVisit(_ placeId: String) {
+      interactor.selectPlaceAsVisit(placeId)
+   }
+   
+   func isSelect(_ isSelect: Bool) {
+      if isSelect {
+         view.setupInitialState()
+      }
+   }
+   
+   func deselectPlaceAsVisit(_ placeId: String) {
+      interactor.deselectPlaceAsVisit(placeId)
+   }
+   
+   func isDeselect(_ isDeselect: Bool) {
+      if isDeselect {
          view.setupInitialState()
       }
    }

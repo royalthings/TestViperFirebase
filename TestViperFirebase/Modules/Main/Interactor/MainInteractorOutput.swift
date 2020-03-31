@@ -13,4 +13,8 @@ protocol MainInteractorOutput: class {
    func displayAllPlaces(_ places: [Place])
    
    func isDelete(_ isDelete: Bool)
+   
+   func isSelect(_ isSelect: Bool)
+   
+   func isDeselect(_ isDeselect: Bool)
 }

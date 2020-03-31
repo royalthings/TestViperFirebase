@@ -26,7 +26,9 @@ class MapPresenter: MapModuleInput, MapViewOutput, MapInteractorOutput {
    }
    
    func displayRandomPlace(_ places: [Place]) {
-      guard let randomPlace = places.randomElement() else { return }
+      let filterPlaces = places.filter { $0.isVisit == false }
+      
+      guard let randomPlace = filterPlaces.randomElement() else { return }
       view.displayRandomPlace(randomPlace)
    }
    

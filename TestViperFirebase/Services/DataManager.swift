@@ -15,8 +15,12 @@ import MapKit
 protocol DataManagerProtocol {
    
    func getPlaces(handler: @escaping (_ returnedPlaces: [Place]) -> ())
+   func getUserPlaces(handler: @escaping (_ returnedPlaces: [Place]) -> ())
+   
    func addNewPlace(title: String, discipline: String, latitude: String, longitude: String, handler: @escaping (_ isAdded: Bool) -> ())
    func delete(withId id: String, handler: @escaping (_ isDelete: Bool) -> ())
+   func selectAsVisit(withId id: String, handler: @escaping (_ isSelect: Bool) -> ())
+   func deselectAsVisit(withId id: String, handler: @escaping (_ isSelect: Bool) -> ())
    
    func login(email: String, password: String, handler: @escaping (_ userName: String) -> ())
    func registration(email: String, password: String, handler: @escaping (_ resultLogin: Bool) -> ())
@@ -57,10 +61,36 @@ class DataManager: DataManagerProtocol {
             let longitude = place.childSnapshot(forPath: "longitude").value as! CLLocationDegrees
             let placeId = place.childSnapshot(forPath: "placeId").value as! String
             let userId = place.childSnapshot(forPath: "userId").value as! String
+            let isVisit = place.childSnapshot(forPath: "isVisit").value as! Bool
             
             let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
             
-            let place = Place(title: title, discipline: discipline, coordinate: coordinate, placeId: placeId, userId: userId)
+            let place = Place(title: title, discipline: discipline, coordinate: coordinate, placeId: placeId, userId: userId, isVisit: isVisit)
+            if userId == Auth.auth().currentUser?.uid || userId == "0" {
+               placeArray.append(place)
+            }
+         }
+         handler(placeArray)
+      }
+   }
+   
+   func getUserPlaces(handler: @escaping (_ returnedPlaces: [Place]) -> ()) {
+      var placeArray = [Place]()
+      
+      REF_PLACES.observeSingleEvent(of: .value) { (placeSnapshot) in
+         guard let placeSnapshot = placeSnapshot.children.allObjects as? [DataSnapshot] else { return }
+         for place in placeSnapshot {
+            let title = place.childSnapshot(forPath: "title").value as! String
+            let discipline = place.childSnapshot(forPath: "discipline").value as! String
+            let latitude = place.childSnapshot(forPath: "latitude").value as! CLLocationDegrees
+            let longitude = place.childSnapshot(forPath: "longitude").value as! CLLocationDegrees
+            let placeId = place.childSnapshot(forPath: "placeId").value as! String
+            let userId = place.childSnapshot(forPath: "userId").value as! String
+            let isVisit = place.childSnapshot(forPath: "isVisit").value as! Bool
+            
+            let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+            
+            let place = Place(title: title, discipline: discipline, coordinate: coordinate, placeId: placeId, userId: userId, isVisit: isVisit)
             if userId == Auth.auth().currentUser?.uid {
                placeArray.append(place)
             }
@@ -89,8 +119,9 @@ class DataManager: DataManagerProtocol {
       
       let newPlace = REF_PLACES.childByAutoId()
       let userId = Auth.auth().currentUser?.uid
+      let isVisit = false
       
-      let plase: Dictionary<String, Any> = ["title": title, "discipline": discipline, "latitude": latitudeFloat, "longitude": longitudeFloat, "placeId": newPlace.key as Any, "userId": userId as Any]
+      let plase: Dictionary<String, Any> = ["title": title, "discipline": discipline, "latitude": latitudeFloat, "longitude": longitudeFloat, "placeId": newPlace.key as Any, "userId": userId as Any, "isVisit": isVisit]
       
       newPlace.setValue(plase)
       
@@ -99,6 +130,26 @@ class DataManager: DataManagerProtocol {
    
    func delete(withId id: String, handler: @escaping (_ isDelete: Bool) -> ()) {
       REF_PLACES.child(id).removeValue { (error, referens) in
+         if error != nil {
+            print(error as Any)
+            handler(false)
+         }
+         handler(true)
+      }
+   }
+   
+   func selectAsVisit(withId id: String, handler: @escaping (_ isSelect: Bool) -> ()) {
+      REF_PLACES.child(id).child("isVisit").setValue(true) { (error, referens) in
+         if error != nil {
+            print(error as Any)
+            handler(false)
+         }
+         handler(true)
+      }
+   }
+   
+   func deselectAsVisit(withId id: String, handler: @escaping (_ isSelect: Bool) -> ()) {
+      REF_PLACES.child(id).child("isVisit").setValue(false) { (error, referens) in
          if error != nil {
             print(error as Any)
             handler(false)

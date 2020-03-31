@@ -27,6 +27,10 @@ protocol MainViewOutput {
    
    func deletePlace(_ placeId: String)
    
+   func selectPlaceAsVisit(_ placeId: String)
+   
+   func deselectPlaceAsVisit(_ placeId: String)
+   
    func dismiss()
    
 }

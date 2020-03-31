@@ -102,10 +102,39 @@ extension MainViewController: UITableViewDelegate {
       return true
    }
    
-   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-      if editingStyle == .delete {
-         guard let placeId = places[indexPath.row].placeId else { return }
-         output.deletePlace(placeId)
+   func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+      guard let placeId = places[indexPath.row].placeId else { return nil }
+      let placeIsVisit = places[indexPath.row].isVisit
+      let deleteTitle = "Delete"
+      let selectTitle = "Select as visited"
+      
+      let deleteAction = UIContextualAction(style: .normal, title: deleteTitle) { (action, view, completion) in
+         self.output.deletePlace(placeId)
+         completion(true)
       }
+      
+      let isVisitAction = UIContextualAction(style: .normal, title: selectTitle) { (action, view, completion) in
+         if placeIsVisit == false {
+            self.output.selectPlaceAsVisit(placeId)
+            completion(true)
+         } else {
+            self.output.deselectPlaceAsVisit(placeId)
+            completion(true)
+         }
+         
+      }
+      
+      deleteAction.backgroundColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
+      isVisitAction.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
+      
+      if placeIsVisit == false {
+         isVisitAction.title = selectTitle
+         
+      } else {
+         isVisitAction.image = #imageLiteral(resourceName: "check")
+      }
+
+      return UISwipeActionsConfiguration(actions: [deleteAction, isVisitAction])
    }
+
 }
