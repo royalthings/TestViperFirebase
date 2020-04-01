@@ -83,8 +83,10 @@ extension MainViewController: UITableViewDataSource {
       let cell = placesTableView.dequeueReusableCell(withIdentifier: "PlaceCell", for: indexPath) as! PlaceCell
       
       let index = indexPath.row
+      guard let discipline = places[index].discipline else { return UITableViewCell() }
       cell.nameLabel.text = places[index].title
       cell.deskriptionLabel.text = places[index].discipline
+      cell.selectPlaceImage(discipline: discipline)
       return cell
    }
 }

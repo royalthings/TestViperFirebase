@@ -16,6 +16,11 @@ class AddPlaceViewController: UIViewController, AddPlaceViewInput {
    @IBOutlet weak var longitudeTextField: UITextField!
    @IBOutlet weak var addButton: UIButton!
    
+   @IBOutlet weak var dropDownMenu: UIPickerView!
+   
+   let listMenu = ["Cafe", "Cinema", "Magazine", "Museum", "Park", "Play park", "Restaurant", "Statue", "Theatre"]
+   
+   
    var output: AddPlaceViewOutput!
    var latitude: String?
    var longitude: String?
@@ -26,6 +31,7 @@ class AddPlaceViewController: UIViewController, AddPlaceViewInput {
       output.viewIsReady()
       
       addButton.layer.cornerRadius = 10
+      dropDownMenu.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
       
       latitudeTextField.text = latitude
       longitudeTextField.text = longitude
@@ -63,5 +69,35 @@ class AddPlaceViewController: UIViewController, AddPlaceViewInput {
       self.latitude = latitude
       self.longitude = longitude
    
+   }
+}
+
+extension AddPlaceViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+   
+   func numberOfComponents(in pickerView: UIPickerView) -> Int {
+      return 1
+   }
+   
+   func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+      return listMenu.count
+   }
+   
+   func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+      view.endEditing(true)
+      return listMenu[row]
+   }
+   
+   func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+      disciplineTextField.text = listMenu[row]
+      dropDownMenu.isHidden = true
+   }
+}
+
+extension AddPlaceViewController: UITextFieldDelegate {
+   func textFieldDidBeginEditing(_ textField: UITextField) {
+      if textField == disciplineTextField {
+         dropDownMenu.isHidden = false
+         disciplineTextField.endEditing(true)
+      }
    }
 }

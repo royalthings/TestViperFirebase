@@ -20,12 +20,11 @@ class RegistrationPresenter: RegistrationModuleInput, RegistrationViewOutput, Re
       router.dismiss()
    }
    
-   func userRegistration(email: String, password: String) {
-      interactor.userRegistration(email: email, password: password)
+   func userRegistration(email: String, name: String, password: String) {
+      interactor.userRegistration(email: email, name: name, password: password)
    }
    
    func userRegistered(_ isRegistered: Bool) {
-      print(isRegistered)
       if isRegistered {
          router.dismiss()
          view.cleanTextFields()

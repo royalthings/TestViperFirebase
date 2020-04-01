@@ -10,10 +10,12 @@ import Foundation
 
 class User {
    let email: String
+   let name: String
    let password: String
    
-   init(email: String, password: String) {
+   init(email: String, name: String, password: String) {
       self.email = email
+      self.name = name
       self.password = password
    }
 }

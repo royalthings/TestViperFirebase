@@ -23,7 +23,7 @@ protocol DataManagerProtocol {
    func deselectAsVisit(withId id: String, handler: @escaping (_ isSelect: Bool) -> ())
    
    func login(email: String, password: String, handler: @escaping (_ userName: String) -> ())
-   func registration(email: String, password: String, handler: @escaping (_ resultLogin: Bool) -> ())
+   func registration(email: String, name: String, password: String, handler: @escaping (_ resultLogin: Bool) -> ())
    func userIsAlreadyLogged(handler: @escaping (_ IsAlreadyLogged: Bool, _ username: String) -> ())
    func signOut(handler: @escaping (Bool) -> ())
 }
@@ -158,7 +158,7 @@ class DataManager: DataManagerProtocol {
       }
    }
    
-   func registration(email: String, password: String, handler: @escaping (Bool) -> ()) {
+   func registration(email: String, name: String, password: String, handler: @escaping (Bool) -> ()) {
       
       Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
          
@@ -169,7 +169,9 @@ class DataManager: DataManagerProtocol {
          }
          if user != nil {
             let userId = self.REF_USER.childByAutoId()
-            let user: Dictionary<String, Any> = ["email": email, "password": password]
+            let user: Dictionary<String, Any> = ["email": email, "name": name, "password": password]
+            
+//            let test = User(email: email, name: name, password: password)
             userId.setValue(user)
             
             handler(true)

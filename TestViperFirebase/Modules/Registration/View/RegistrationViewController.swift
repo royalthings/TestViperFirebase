@@ -11,11 +11,9 @@ import UIKit
 class RegistrationViewController: UIViewController, RegistrationViewInput {
 
    @IBOutlet weak var emailTextField: UITextField!
-   
+   @IBOutlet weak var nameTextField: UITextField!
    @IBOutlet weak var passwordTextField: UITextField!
-   
    @IBOutlet weak var confirmPasswordTextfield: UITextField!
-   
    @IBOutlet weak var signupButton: UIButton!
    
    var output: RegistrationViewOutput!
@@ -42,6 +40,7 @@ class RegistrationViewController: UIViewController, RegistrationViewInput {
    
    func cleanTextFields() {
       emailTextField.text = ""
+      nameTextField.text = ""
       passwordTextField.text = ""
       confirmPasswordTextfield.text = ""
    }
@@ -53,12 +52,12 @@ class RegistrationViewController: UIViewController, RegistrationViewInput {
    
    @IBAction func signupAction(_ sender: Any) {
       
-      guard let email = emailTextField.text, let password = passwordTextField.text, let confirmPassword = confirmPasswordTextfield.text, email != "", password != "", confirmPassword != "" else {
+      guard let email = emailTextField.text, let name = nameTextField.text, let password = passwordTextField.text, let confirmPassword = confirmPasswordTextfield.text, email != "", name != "", password != "", confirmPassword != "" else {
          showError(title: "Error", message: "Enter correct data")
          return
       }
       if password == confirmPassword {
-         output.userRegistration(email: email, password: password)
+         output.userRegistration(email: email, name: name, password: password)
       } else {
          showError(title: "Error", message: "Enter correct password")
       }

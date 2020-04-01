@@ -10,6 +10,6 @@ import Foundation
 
 protocol RegistrationInteractorInput {
    
-   func userRegistration(email: String, password: String)
+   func userRegistration(email: String, name: String, password: String)
 
 }

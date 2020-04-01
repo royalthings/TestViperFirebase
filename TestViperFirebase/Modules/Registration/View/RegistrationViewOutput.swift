@@ -17,5 +17,5 @@ protocol RegistrationViewOutput {
    
    func dismiss()
    
-   func userRegistration(email: String, password: String)
+   func userRegistration(email: String, name: String, password: String)
 }
