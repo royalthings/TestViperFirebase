@@ -7,15 +7,19 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class ChoiceViewController: UIViewController, ChoiceViewInput {
-   
-   
+
+   //MARK: - Outlets
    @IBOutlet weak var showListOfPlacesButton: UIButton!
    @IBOutlet weak var showMapButton: UIButton!
-   
+   @IBOutlet weak var helloLabel: UILabel!
    
    var output: ChoiceViewOutput!
+   
+   let email = Auth.auth().currentUser?.email
    
    // MARK: Life cycle
    override func viewDidLoad() {
@@ -24,6 +28,8 @@ class ChoiceViewController: UIViewController, ChoiceViewInput {
       
       showListOfPlacesButton.layer.cornerRadius = 10
       showMapButton.layer.cornerRadius = 10
+      
+      obtainUserName()
    }
    
    
@@ -38,6 +44,16 @@ class ChoiceViewController: UIViewController, ChoiceViewInput {
       self.present(alertController, animated: true, completion: nil)
    }
    
+   func obtainUserName() {
+      output.obtainUserName(email: email)
+   }
+   
+   func saveName(userName: String) {
+      helloLabel.text = "Hello, " + userName + "!"
+   }
+   
+   
+   //MARK: - Actions
    @IBAction func loguotAction(_ sender: Any) {
       output.signOut()
    }

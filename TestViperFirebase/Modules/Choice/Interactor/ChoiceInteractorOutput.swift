@@ -11,5 +11,7 @@ import Foundation
 protocol ChoiceInteractorOutput: class {
    
    func isSignOut(_ isSignOut: Bool)
+   
+   func saveName(userName: String)
 
 }

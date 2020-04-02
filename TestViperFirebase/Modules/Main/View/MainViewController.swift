@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseAuth
 
 class MainViewController: UIViewController, MainViewInput {
  
@@ -45,7 +43,7 @@ class MainViewController: UIViewController, MainViewInput {
    // MARK: MainViewInput
    func setupInitialState() {
       output.featchAllPlaces()
-      nameLabel.text = Auth.auth().currentUser?.email
+      nameLabel.text = "Places"
    }
    
    func showError(title: String, message: String) {

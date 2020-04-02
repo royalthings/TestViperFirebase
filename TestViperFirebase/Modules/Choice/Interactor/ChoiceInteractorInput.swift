@@ -11,4 +11,6 @@ import Foundation
 protocol ChoiceInteractorInput {
    
    func signOut()
+   
+   func obtainUserName(email: String?)
 }

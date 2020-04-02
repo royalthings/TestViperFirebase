@@ -35,5 +35,13 @@ class ChoicePresenter: ChoiceModuleInput, ChoiceViewOutput, ChoiceInteractorOutp
    func goToMapScreen() {
       router.goToMapScreen()
    }
+   
+   func obtainUserName(email: String?) {
+      interactor.obtainUserName(email: email)
+   }
+   
+   func saveName(userName: String) {
+      view.saveName(userName: userName)
+   }
 
 }

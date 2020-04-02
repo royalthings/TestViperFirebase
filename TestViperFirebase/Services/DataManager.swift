@@ -26,6 +26,8 @@ protocol DataManagerProtocol {
    func registration(email: String, name: String, password: String, handler: @escaping (_ resultLogin: Bool) -> ())
    func userIsAlreadyLogged(handler: @escaping (_ IsAlreadyLogged: Bool, _ username: String) -> ())
    func signOut(handler: @escaping (Bool) -> ())
+   
+   func obtainUserName(email: String?, handler: @escaping (_ returnedUserName: String) -> ())
 }
 
 let DB_BASE = Database.database().reference()
@@ -197,6 +199,22 @@ class DataManager: DataManagerProtocol {
       } catch let error {
          print(error)
          handler(false)
+      }
+   }
+   
+   func obtainUserName(email: String?, handler: @escaping (_ returnedUserName: String) -> ()) {
+      var userName = ""
+      REF_USER.observeSingleEvent(of: .value) { (userSnapshot) in
+         
+         guard let userSnapshot = userSnapshot.children.allObjects as? [DataSnapshot] else { return }
+         for user in userSnapshot {
+            let name = user.childSnapshot(forPath: "name").value as! String
+            let userEmail = user.childSnapshot(forPath: "email").value as! String
+            if userEmail == email {
+               userName = name
+            }
+         }
+         handler(userName)
       }
    }
 }

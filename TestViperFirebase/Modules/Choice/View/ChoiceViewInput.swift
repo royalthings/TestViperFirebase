@@ -16,4 +16,8 @@ protocol ChoiceViewInput: class {
    func setupInitialState()
    
    func showError(title: String, message: String)
+   
+   func obtainUserName()
+   
+   func saveName(userName: String)
 }
