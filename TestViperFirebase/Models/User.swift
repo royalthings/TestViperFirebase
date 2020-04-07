@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CryptoSwift
 
 class User {
    let email: String
@@ -17,5 +18,10 @@ class User {
       self.email = email
       self.name = name
       self.password = password
+   }
+   
+   class func passwordHash(from email: String, password: String) -> String {
+      let salt = "x4vV8bGgqqmQwgCoyXFQj+(o.nUNQhVP7ND"
+      return "\(password).\(email).\(salt)".sha256()
    }
 }

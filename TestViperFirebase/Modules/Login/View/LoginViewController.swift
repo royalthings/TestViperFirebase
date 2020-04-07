@@ -8,8 +8,6 @@
 
 import UIKit
 
-
-
 class LoginViewController: UIViewController, LoginViewInput {
    
    struct Notifications {
@@ -66,11 +64,16 @@ class LoginViewController: UIViewController, LoginViewInput {
    }
    
    @IBAction func loginAction(_ sender: Any) {
+      view.endEditing(true)
+      
       guard let email = loginTextField.text, let password = passwordTextField.text, email != "", password != "" else {
          showError(title: "Error", message: "Enter correct login or password")
          return
       }
-      output.userIsLogin(email: email, password: password)
+      
+      let finalHash = User.passwordHash(from: email, password: password)
+      
+      output.userIsLogin(email: email, password: finalHash)
    }
    
    @IBAction func registrationAction(_ sender: Any) {

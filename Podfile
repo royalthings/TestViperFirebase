@@ -9,6 +9,7 @@ target 'TestViperFirebase' do
   pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
+  pod 'CryptoSwift'
 
   target 'TestViperFirebaseTests' do
     inherit! :search_paths

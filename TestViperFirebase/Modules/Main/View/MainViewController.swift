@@ -10,9 +10,10 @@ import UIKit
 
 class MainViewController: UIViewController, MainViewInput {
  
+   //MARK: - Outlets
    @IBOutlet weak var placesTableView: UITableView!
-   
    @IBOutlet weak var nameLabel: UILabel!
+   @IBOutlet weak var footerLabel: UILabel!
    
    var places: [Place] = []
 
@@ -38,6 +39,15 @@ class MainViewController: UIViewController, MainViewInput {
             self.placesTableView.reloadData()
          }
       }
+      showFooterText()
+   }
+   
+   fileprivate func showFooterText() {
+      if places.count == 0 {
+         self.footerLabel.text = "Click plus to add a new place."
+      } else {
+         self.footerLabel.text = "Swipe a cell with a place to mark it as visited or delete. Click plus to add a new place."
+      }
    }
 
    // MARK: MainViewInput
@@ -57,6 +67,7 @@ class MainViewController: UIViewController, MainViewInput {
       output.passDataToMap(segue)
    }
    
+   //MARK: Actions
    @IBAction func backAction(_ sender: Any) {
       output.dismiss()
    }
@@ -67,6 +78,7 @@ class MainViewController: UIViewController, MainViewInput {
    }
 }
 
+//MARK: - UITableViewDataSource
 extension MainViewController: UITableViewDataSource {
    
    func numberOfSections(in tableView: UITableView) -> Int {
@@ -89,6 +101,7 @@ extension MainViewController: UITableViewDataSource {
    }
 }
 
+//MARK: - UITableViewDelegate
 extension MainViewController: UITableViewDelegate {
    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
       return 80
@@ -121,7 +134,6 @@ extension MainViewController: UITableViewDelegate {
             self.output.deselectPlaceAsVisit(placeId)
             completion(true)
          }
-         
       }
       
       deleteAction.backgroundColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
@@ -136,5 +148,4 @@ extension MainViewController: UITableViewDelegate {
 
       return UISwipeActionsConfiguration(actions: [deleteAction, isVisitAction])
    }
-
 }
