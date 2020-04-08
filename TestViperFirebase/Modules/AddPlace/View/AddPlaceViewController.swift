@@ -9,7 +9,7 @@
 import UIKit
 
 class AddPlaceViewController: UIViewController, AddPlaceViewInput {
-
+   
    @IBOutlet weak var nameTextField: UITextField!
    @IBOutlet weak var disciplineTextField: UITextField!
    @IBOutlet weak var latitudeTextField: UITextField!
@@ -55,7 +55,20 @@ class AddPlaceViewController: UIViewController, AddPlaceViewInput {
             showError(title: "Error", message: "Еnter correct data")
             return
       }
-      output.addNewPlace(title: title, discipline: discipline, latitude: latitude, longitude: longitude)
+      
+      if Double(latitude) == nil || Double(longitude) == nil {
+         showError(title: "Error", message: "Еnter correct coordinate")
+      }
+      
+      let filteredTitle = String.filteredCharacters(enteredText: title)
+      let filteredLatitude = String.filteredCharacters(enteredText: latitude)
+      let filteredLongitude = String.filteredCharacters(enteredText: longitude)
+      
+      if title == filteredTitle, latitude == filteredLatitude, longitude == filteredLongitude {
+         output.addNewPlace(title: title, discipline: discipline, latitude: latitude, longitude: longitude)
+      } else {
+         showError(title: "Error", message: "You have entered the wrong characters.")
+      }
    }
    
    func showError(title: String, message: String) {
@@ -68,7 +81,6 @@ class AddPlaceViewController: UIViewController, AddPlaceViewInput {
    func addNewCoordinate(latitude: String, longitude: String) {
       self.latitude = latitude
       self.longitude = longitude
-   
    }
 }
 

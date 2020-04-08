@@ -34,6 +34,7 @@
 		66C44CD6F48D78DE92EA38AA /* DetailModuleInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7D270579C693E45506E322 /* DetailModuleInput.swift */; };
 		6A4F284046C1FF2CF9E693AE /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A3E90B9845C05148E5658B /* MainRouter.swift */; };
 		6D0B091692F1929F364C6002 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A06E758EC1B8665C97DD37A /* LoginViewController.swift */; };
+		6E38FDAE243DB2CD0073C5D2 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E38FDAD243DB2CD0073C5D2 /* String+Extensions.swift */; };
 		6E685B3D241BA8CA00F72415 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E685B3C241BA8CA00F72415 /* User.swift */; };
 		6E7511A0240CFB08004DC847 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E75119F240CFB08004DC847 /* AppDelegate.swift */; };
 		6E7511A2240CFB08004DC847 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7511A1240CFB08004DC847 /* SceneDelegate.swift */; };
@@ -150,6 +151,7 @@
 		6705A1581DD7A9DF50802871 /* ChoiceModuleInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChoiceModuleInput.swift; sourceTree = "<group>"; };
 		6833E4E545E6A40964BD3EBC /* LoginViewOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoginViewOutput.swift; sourceTree = "<group>"; };
 		6A6FF401DF775A548FA8C865 /* LoginInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		6E38FDAD243DB2CD0073C5D2 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		6E685B3C241BA8CA00F72415 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6E75119C240CFB08004DC847 /* TestViperFirebase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestViperFirebase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E75119F240CFB08004DC847 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -417,6 +419,14 @@
 			path = Interactor;
 			sourceTree = "<group>";
 		};
+		6E38FDAC243DB2180073C5D2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6E38FDAD243DB2CD0073C5D2 /* String+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		6E751193240CFB08004DC847 = {
 			isa = PBXGroup;
 			children = (
@@ -441,6 +451,7 @@
 		6E75119E240CFB08004DC847 /* TestViperFirebase */ = {
 			isa = PBXGroup;
 			children = (
+				6E38FDAC243DB2180073C5D2 /* Extensions */,
 				6E7511C4240D002D004DC847 /* Services */,
 				6E7511C3240CFFF1004DC847 /* Models */,
 				72F54ED489EB35BF2F97942F /* Modules */,
@@ -941,6 +952,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E7511A0240CFB08004DC847 /* AppDelegate.swift in Sources */,
+				6E38FDAE243DB2CD0073C5D2 /* String+Extensions.swift in Sources */,
 				6E7511A2240CFB08004DC847 /* SceneDelegate.swift in Sources */,
 				733D93B99F44508AFAC348C3 /* MainViewInput.swift in Sources */,
 				D64998CC96FCB95033E26865 /* MainViewOutput.swift in Sources */,

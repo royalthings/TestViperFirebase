@@ -10,14 +10,12 @@ import UIKit
 
 
 class RegistrationViewController: UIViewController, RegistrationViewInput {
-
+   
    @IBOutlet weak var emailTextField: UITextField!
    @IBOutlet weak var nameTextField: UITextField!
    @IBOutlet weak var passwordTextField: UITextField!
    @IBOutlet weak var confirmPasswordTextfield: UITextField!
    @IBOutlet weak var signupButton: UIButton!
-   
-//   let allowedCharacters = CharacterSet(charactersIn:"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvxyzабвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ-").inverted
    
    var output: RegistrationViewOutput!
    
@@ -48,7 +46,6 @@ class RegistrationViewController: UIViewController, RegistrationViewInput {
       confirmPasswordTextfield.text = ""
    }
    
-   
    @IBAction func backAction(_ sender: Any) {
       output.dismiss()
    }
@@ -60,11 +57,23 @@ class RegistrationViewController: UIViewController, RegistrationViewInput {
          showError(title: "Error", message: "Enter correct data")
          return
       }
-      if password == confirmPassword {
-         let finalHash = User.passwordHash(from: email, password: password)
-         output.userRegistration(email: email, name: name, password: finalHash)
+      
+      let filteredEmail = String.filteredCharacters(enteredText: email)
+      let filteredName = String.filteredCharacters(enteredText: name)
+      let filteredPassword = String.filteredCharacters(enteredText: password)
+      let filteredConfirmPassword = String.filteredCharacters(enteredText: confirmPassword)
+      
+      if email == filteredEmail, name == filteredName, password == filteredPassword, confirmPassword == filteredConfirmPassword {
+         if password == confirmPassword {
+            let finalHash = User.passwordHash(from: email, password: password)
+            output.userRegistration(email: email, name: name, password: finalHash)
+         } else {
+            showError(title: "Error", message: "Enter correct password")
+         }
       } else {
-         showError(title: "Error", message: "Enter correct password")
+         showError(title: "Error", message: "You have entered the wrong characters.")
       }
+      
+      
    }
 }
