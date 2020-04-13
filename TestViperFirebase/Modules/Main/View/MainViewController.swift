@@ -16,6 +16,7 @@ class MainViewController: UIViewController, MainViewInput {
    @IBOutlet weak var footerLabel: UILabel!
    
    var places: [Place] = []
+   var deletePlaceIndexPath: IndexPath? = nil
    
    var output: MainViewOutput!
    
@@ -60,7 +61,24 @@ class MainViewController: UIViewController, MainViewInput {
       let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
       let alertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
       alertController.addAction(alertAction)
-      self.present(alertController, animated: true, completion: nil)
+      present(alertController, animated: true, completion: nil)
+   }
+   
+   fileprivate func confirmDelete() {
+      let alertController = UIAlertController(title: "Delete place", message: "Are you sure you want to delete place?", preferredStyle: .actionSheet)
+      let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: handleDeletePlanet)
+      let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+      alertController.addAction(deleteAction)
+      alertController.addAction(cancelAction)
+      present(alertController, animated: true, completion: nil)
+   }
+   
+   fileprivate func handleDeletePlanet(alertAction: UIAlertAction!) -> Void {
+      if let indexPath = deletePlaceIndexPath {
+         if let placeId = places[indexPath.row].placeId {
+            output.deletePlace(placeId)
+         }
+      }
    }
    
    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -71,8 +89,7 @@ class MainViewController: UIViewController, MainViewInput {
    @IBAction func backAction(_ sender: Any) {
       output.dismiss()
    }
-   
-   
+
    @IBAction func addPlaceAction(_ sender: Any) {
       output.addNewPlace()
    }
@@ -117,6 +134,7 @@ extension MainViewController: UITableViewDelegate {
 
    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
       guard let placeId = places[indexPath.row].placeId else { return nil }
+      deletePlaceIndexPath = indexPath
       let placeIsVisit = places[indexPath.row].isVisit
       let deleteTitle = "Delete"
       let selectTitle = "Select as visited"
@@ -126,7 +144,7 @@ extension MainViewController: UITableViewDelegate {
       }
 
       let deleteAction = UIContextualAction(style: .normal, title: deleteTitle) { (action, view, completion) in
-         self.output.deletePlace(placeId)
+         self.confirmDelete()
          completion(true)
       }
 
