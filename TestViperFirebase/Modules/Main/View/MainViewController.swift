@@ -9,26 +9,25 @@
 import UIKit
 
 class MainViewController: UIViewController, MainViewInput {
- 
+   
    //MARK: - Outlets
    @IBOutlet weak var placesTableView: UITableView!
    @IBOutlet weak var nameLabel: UILabel!
    @IBOutlet weak var footerLabel: UILabel!
    
    var places: [Place] = []
-
+   
    var output: MainViewOutput!
-
+   
    // MARK: Life cycle
    override func viewDidLoad() {
       super.viewDidLoad()
       output.viewIsReady()
    }
    
-   override func viewDidAppear(_ animated: Bool) {
-       super.viewDidAppear(animated)
-       placesTableView.reloadData()
-       setupInitialState()
+   override func viewWillAppear(_ animated: Bool) {
+      super.viewWillAppear(animated)
+      setupInitialState()
    }
    
    func displayPlaces(_ places: [Place]) {
@@ -40,6 +39,7 @@ class MainViewController: UIViewController, MainViewInput {
          }
       }
       showFooterText()
+      placesTableView.reloadData()
    }
    
    fileprivate func showFooterText() {
@@ -49,7 +49,7 @@ class MainViewController: UIViewController, MainViewInput {
          self.footerLabel.text = "Swipe a cell with a place to mark it as visited or delete. Click plus to add a new place."
       }
    }
-
+   
    // MARK: MainViewInput
    func setupInitialState() {
       output.featchAllPlaces()
@@ -114,18 +114,22 @@ extension MainViewController: UITableViewDelegate {
    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
       return true
    }
-   
+
    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
       guard let placeId = places[indexPath.row].placeId else { return nil }
       let placeIsVisit = places[indexPath.row].isVisit
       let deleteTitle = "Delete"
       let selectTitle = "Select as visited"
-      
+
+      guard places.count > 0 else {
+         return nil
+      }
+
       let deleteAction = UIContextualAction(style: .normal, title: deleteTitle) { (action, view, completion) in
          self.output.deletePlace(placeId)
          completion(true)
       }
-      
+
       let isVisitAction = UIContextualAction(style: .normal, title: selectTitle) { (action, view, completion) in
          if placeIsVisit == false {
             self.output.selectPlaceAsVisit(placeId)
@@ -135,13 +139,12 @@ extension MainViewController: UITableViewDelegate {
             completion(true)
          }
       }
-      
+
       deleteAction.backgroundColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
       isVisitAction.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
-      
+
       if placeIsVisit == false {
          isVisitAction.title = selectTitle
-         
       } else {
          isVisitAction.image = #imageLiteral(resourceName: "check")
       }
