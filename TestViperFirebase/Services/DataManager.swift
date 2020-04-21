@@ -27,8 +27,8 @@ protocol DataManagerProtocol {
    func userIsAlreadyLogged(handler: @escaping (_ IsAlreadyLogged: Bool, _ username: String) -> ())
    func signOut(handler: @escaping (Bool) -> ())
    
-   func obtainUserName(email: String?, handler: @escaping (_ returnedUserName: String) -> ())
-   func obtainUserCity(email: String?, handler: @escaping (_ returnedUserName: String) -> ())
+   func obtainUserData(email: String?, handler: @escaping (_ returnedUserName: String, _ returnedUserCity: String) -> ())
+   //func obtainUserCity(email: String?, handler: @escaping (_ returnedUserCity: String) -> ())
 }
 
 let DB_BASE = Database.database().reference()
@@ -205,36 +205,39 @@ class DataManager: DataManagerProtocol {
       }
    }
    
-   func obtainUserName(email: String?, handler: @escaping (_ returnedUserName: String) -> ()) {
+   func obtainUserData(email: String?, handler: @escaping (_ returnedUserName: String, _ returnedUserCity: String) -> ()) {
       var userName = ""
-      REF_USER.observeSingleEvent(of: .value) { (userSnapshot) in
-         
-         guard let userSnapshot = userSnapshot.children.allObjects as? [DataSnapshot] else { return }
-         for user in userSnapshot {
-            let name = user.childSnapshot(forPath: "name").value as! String
-            let userEmail = user.childSnapshot(forPath: "email").value as! String
-            if userEmail == email {
-               userName = name
-            }
-         }
-         handler(userName)
-      }
-   }
-   
-   func obtainUserCity(email: String?, handler: @escaping (_ returnedUserName: String) -> ()) {
       var userCity = ""
       REF_USER.observeSingleEvent(of: .value) { (userSnapshot) in
          
          guard let userSnapshot = userSnapshot.children.allObjects as? [DataSnapshot] else { return }
          for user in userSnapshot {
+            let name = user.childSnapshot(forPath: "name").value as! String
             let city = user.childSnapshot(forPath: "city").value as! String
             let userEmail = user.childSnapshot(forPath: "email").value as! String
             if userEmail == email {
+               userName = name
                userCity = city
             }
          }
-         handler(userCity)
+         handler(userName, userCity)
       }
    }
+   
+//   func obtainUserCity(email: String?, handler: @escaping (_ returnedUserCity: String) -> ()) {
+//      var userCity = ""
+//      REF_USER.observeSingleEvent(of: .value) { (userSnapshot) in
+//
+//         guard let userSnapshot = userSnapshot.children.allObjects as? [DataSnapshot] else { return }
+//         for user in userSnapshot {
+//            let city = user.childSnapshot(forPath: "city").value as! String
+//            let userEmail = user.childSnapshot(forPath: "email").value as! String
+//            if userEmail == email {
+//               userCity = city
+//            }
+//         }
+//         handler(userCity)
+//      }
+//   }
 
 }

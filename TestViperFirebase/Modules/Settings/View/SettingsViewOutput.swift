@@ -16,4 +16,6 @@ protocol SettingsViewOutput {
    func viewIsReady()
    
    func dismiss()
+   
+   func obtainUserData(email: String?)
 }

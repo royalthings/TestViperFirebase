@@ -7,11 +7,13 @@
 //
 
 protocol SettingsViewInput: class {
-
-    /**
-        @author agadu
-        Setup initial state of the view
+   
+   /**
+    @author agadu
+    Setup initial state of the view
     */
-
-    func setupInitialState()
+   
+   func setupInitialState()
+   
+   func saveData(userName: String, userCity: String)
 }

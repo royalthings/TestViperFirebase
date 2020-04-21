@@ -43,6 +43,8 @@
 		6D0B091692F1929F364C6002 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A06E758EC1B8665C97DD37A /* LoginViewController.swift */; };
 		6E3125A7244BB6680055F073 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3125A6244BB6680055F073 /* Constants.swift */; };
 		6E38FDAE243DB2CD0073C5D2 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E38FDAD243DB2CD0073C5D2 /* String+Extensions.swift */; };
+		6E3B58EA244F15110041C116 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3B58E9244F15110041C116 /* SettingsCell.swift */; };
+		6E3B58EC244F15200041C116 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3B58EB244F15200041C116 /* UserCell.swift */; };
 		6E685B3D241BA8CA00F72415 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E685B3C241BA8CA00F72415 /* User.swift */; };
 		6E7511A0240CFB08004DC847 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E75119F240CFB08004DC847 /* AppDelegate.swift */; };
 		6E7511A2240CFB08004DC847 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7511A1240CFB08004DC847 /* SceneDelegate.swift */; };
@@ -175,6 +177,8 @@
 		6A6FF401DF775A548FA8C865 /* LoginInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		6E3125A6244BB6680055F073 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		6E38FDAD243DB2CD0073C5D2 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		6E3B58E9244F15110041C116 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
+		6E3B58EB244F15200041C116 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		6E685B3C241BA8CA00F72415 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6E75119C240CFB08004DC847 /* TestViperFirebase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestViperFirebase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E75119F240CFB08004DC847 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -334,6 +338,7 @@
 		235D1561353F95B1C14B081E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				6E3B58E4244F14A60041C116 /* Cell */,
 				0966C04FB3E21F80C998788B /* SettingsViewInput.swift */,
 				635B81AA2E82711C696285CC /* SettingsViewOutput.swift */,
 				0FBEC099C22C7E95DD737F08 /* SettingsViewController.swift */,
@@ -478,6 +483,15 @@
 				6E38FDAD243DB2CD0073C5D2 /* String+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		6E3B58E4244F14A60041C116 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				6E3B58E9244F15110041C116 /* SettingsCell.swift */,
+				6E3B58EB244F15200041C116 /* UserCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		6E751193240CFB08004DC847 = {
@@ -1060,6 +1074,7 @@
 				4441886C5F4D97639E8B74DB /* MainInteractorOutput.swift in Sources */,
 				EDD182FEA107B6FAEA9EE77A /* MainInteractor.swift in Sources */,
 				6E7511C6240D006E004DC847 /* Place.swift in Sources */,
+				6E3B58EA244F15110041C116 /* SettingsCell.swift in Sources */,
 				7CBECFCFC451E7A96CF4C16C /* MainRouterInput.swift in Sources */,
 				6A4F284046C1FF2CF9E693AE /* MainRouter.swift in Sources */,
 				28A3A50CE120BA8019895BDC /* MainConfigurator.swift in Sources */,
@@ -1073,6 +1088,7 @@
 				4859FCC4BCD60A1D6AACFB1E /* LoginInteractorInput.swift in Sources */,
 				DF5D1651C873CF57CD39C36E /* LoginInteractorOutput.swift in Sources */,
 				BCEF2487524C2BA6E02D5530 /* LoginInteractor.swift in Sources */,
+				6E3B58EC244F15200041C116 /* UserCell.swift in Sources */,
 				21965CFE6639D7573AB44E30 /* LoginRouterInput.swift in Sources */,
 				ABE65C10BACF452DB3545BAC /* LoginRouter.swift in Sources */,
 				6F0507995A033B2C12404444 /* LoginConfigurator.swift in Sources */,

@@ -12,7 +12,6 @@ class MainViewController: UIViewController, MainViewInput {
    
    //MARK: - Outlets
    @IBOutlet weak var placesTableView: UITableView!
-   @IBOutlet weak var nameLabel: UILabel!
    @IBOutlet weak var footerLabel: UILabel!
    
    var places: [Place] = []
@@ -54,7 +53,6 @@ class MainViewController: UIViewController, MainViewInput {
    // MARK: MainViewInput
    func setupInitialState() {
       output.featchAllPlaces()
-      nameLabel.text = "Places"
    }
    
    func showError(title: String, message: String) {

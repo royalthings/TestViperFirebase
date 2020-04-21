@@ -9,5 +9,7 @@
 import Foundation
 
 protocol SettingsInteractorOutput: class {
+   
+   func saveData(userName: String, userCity: String)
 
 }

@@ -29,7 +29,7 @@ class SettingsModuleConfigurator {
    }
    
    private func moduleConfigured(for viewController: SettingsViewController) -> SettingsModuleInput {
-      //let dataManager = DataManager()
+      let dataManager = DataManager()
       let router = SettingsRouter()
       let presenter = SettingsPresenter()
       let interactor = SettingsInteractor()
@@ -37,7 +37,7 @@ class SettingsModuleConfigurator {
       presenter.view = viewController
       presenter.router = router
       
-      //interactor.dataManager = dataManager
+      interactor.dataManager = dataManager
       interactor.output = presenter
       
       router.viewController = viewController

@@ -18,7 +18,7 @@ class ChoiceInteractor: ChoiceInteractorInput {
    }
    
    func obtainUserName(email: String?) {
-      dataManager.obtainUserName(email: email) { (userName) in
+      dataManager.obtainUserData(email: email) { (userName, _) in
          self.output.saveName(userName: userName)
       }
    }

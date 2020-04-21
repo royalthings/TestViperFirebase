@@ -9,5 +9,7 @@
 import Foundation
 
 protocol SettingsInteractorInput {
+   
+   func obtainUserData(email: String?)
 
 }

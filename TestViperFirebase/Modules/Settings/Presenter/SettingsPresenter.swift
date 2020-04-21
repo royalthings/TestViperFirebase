@@ -7,13 +7,21 @@
 //
 
 class SettingsPresenter: SettingsModuleInput, SettingsViewOutput, SettingsInteractorOutput {
-   
+
    weak var view: SettingsViewInput!
    var interactor: SettingsInteractorInput!
    var router: SettingsRouterInput!
    
    func viewIsReady() {
       
+   }
+
+   func obtainUserData(email: String?) {
+      interactor.obtainUserData(email: email)
+   }
+   
+   func saveData(userName: String, userCity: String) {
+      view.saveData(userName: userName, userCity: userCity)
    }
    
    func dismiss() {
