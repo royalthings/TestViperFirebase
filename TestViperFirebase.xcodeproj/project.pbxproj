@@ -21,19 +21,27 @@
 		29897830D5C02E7BB372661E /* RegistrationRouterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1122FB793B45DA67CBF622 /* RegistrationRouterInput.swift */; };
 		2D54F4DFC1B75F0F7474C9D7 /* MapInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67DB03B261CBD9AD939FF6F /* MapInitializer.swift */; };
 		35EEAD434E3EBC40C8E829C9 /* MapConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E776268501D398524EFE6C /* MapConfigurator.swift */; };
+		37B6B0E307598A07C6B6666E /* SettingsInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27564A1F99E64AB30C426DC0 /* SettingsInteractorInput.swift */; };
 		3B983E28C7E372ED5949FC95 /* DetailInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808339193338B72DC5C3FF04 /* DetailInitializer.swift */; };
 		3C31C75086E1007FCDAF45AC /* ChoiceInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510CAD311ACF8B772FEA01F5 /* ChoiceInteractorOutput.swift */; };
 		4441886C5F4D97639E8B74DB /* MainInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFCEE3CC3FC51EADF9F4511 /* MainInteractorOutput.swift */; };
 		444F9D14B75B78449E962A60 /* LoginViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27223F3B31631FDAFD2572B4 /* LoginViewInput.swift */; };
 		44AB3F0856ED1D2C6CE6D7EF /* AddPlaceRouterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEA6A7E29EB7316926FD5C1 /* AddPlaceRouterInput.swift */; };
 		4859FCC4BCD60A1D6AACFB1E /* LoginInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D43D1B3652141C002ECC555 /* LoginInteractorInput.swift */; };
+		4FD161DFDD494308E94A3BCB /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBEC099C22C7E95DD737F08 /* SettingsViewController.swift */; };
+		51C3A5A571758C8687314962 /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB7EE5BB9955197FBBA58ED /* SettingsInteractor.swift */; };
 		5209BD846C4507435EA03050 /* MapInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCFC45CD1B9334C2F41AA9 /* MapInteractor.swift */; };
+		5933D17FB1BC553E8725A943 /* SettingsInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6EFA601E05F0EC74FE2226 /* SettingsInitializer.swift */; };
+		5AD2AC879054D2E004802BAA /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7CDEF798644B3B8EDAC3D5 /* SettingsPresenter.swift */; };
 		5EF4240EE9A4EDFFDAEFC24F /* DetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23638881BD2ED7EBFF989739 /* DetailInteractor.swift */; };
 		5F56993BAABADB240498A9C6 /* DetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D47CE34BCF92837BB8FF65 /* DetailRouter.swift */; };
+		60363A3CDB8BC52525314E38 /* SettingsModuleInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0443400310C57717DBEBD458 /* SettingsModuleInput.swift */; };
 		6199AED86AC5B05C05AA64D8 /* ChoiceModuleInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6705A1581DD7A9DF50802871 /* ChoiceModuleInput.swift */; };
 		66C44CD6F48D78DE92EA38AA /* DetailModuleInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7D270579C693E45506E322 /* DetailModuleInput.swift */; };
+		69D212DBC5BBC8ABC4D71E8D /* SettingsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FE3109AF3E5CB86A5E2565 /* SettingsConfigurator.swift */; };
 		6A4F284046C1FF2CF9E693AE /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A3E90B9845C05148E5658B /* MainRouter.swift */; };
 		6D0B091692F1929F364C6002 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A06E758EC1B8665C97DD37A /* LoginViewController.swift */; };
+		6E3125A7244BB6680055F073 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3125A6244BB6680055F073 /* Constants.swift */; };
 		6E38FDAE243DB2CD0073C5D2 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E38FDAD243DB2CD0073C5D2 /* String+Extensions.swift */; };
 		6E685B3D241BA8CA00F72415 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E685B3C241BA8CA00F72415 /* User.swift */; };
 		6E7511A0240CFB08004DC847 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E75119F240CFB08004DC847 /* AppDelegate.swift */; };
@@ -64,6 +72,7 @@
 		8B33B08B0F6FD6F440D6030F /* ChoiceViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89238823D911A0C1383BA68 /* ChoiceViewOutput.swift */; };
 		8C23A9E6EC96EAFCDE5461A4 /* RegistrationConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFCC5085185EA0BE75B95F8 /* RegistrationConfigurator.swift */; };
 		8CA565328F93990DEE3703C0 /* AddPlaceRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E1B2CFE9BED396D8A1AC22 /* AddPlaceRouter.swift */; };
+		8DCD9983CC593BF9D35FD2AA /* SettingsInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19376506ED0FE8773A45A12E /* SettingsInteractorOutput.swift */; };
 		8F769845B8D11FC8733413B6 /* MainInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F959F9E9AB2AF030BAE09EE /* MainInitializer.swift */; };
 		90E9D736602AE00F348BC002 /* ChoiceRouterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DF5F353B2B12B3C3ECB20A /* ChoiceRouterInput.swift */; };
 		9511A8AC796D9FC434041289 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1EEFFE844D5D65D98D2AF2 /* LoginPresenter.swift */; };
@@ -71,11 +80,14 @@
 		9C4B2760E298492C45F850DC /* ChoicePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C9348CB2BBFE63171E4F47 /* ChoicePresenter.swift */; };
 		A18DCC611F901AC4324C1C38 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166C05394A188889D5AFFA09 /* MapViewController.swift */; };
 		A329B6935297C80BF8F60343 /* MapInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A604648C400D587C303F7692 /* MapInteractorOutput.swift */; };
+		A594B628E8F1FFD8483D8078 /* SettingsRouterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79D159332E363FB7E0E37F2 /* SettingsRouterInput.swift */; };
 		A5EE587A41D74D4498F463AE /* AddPlaceViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05950E128030C838FEB9F36 /* AddPlaceViewOutput.swift */; };
 		AB46A3386232744ED88C81AB /* RegistrationViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3213C9BD93BD3A4F8A58ADD2 /* RegistrationViewInput.swift */; };
 		ABE65C10BACF452DB3545BAC /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFDC7D29F1620DCBB448E15 /* LoginRouter.swift */; };
+		AF6D002BB62E29E8868F3BA2 /* SettingsViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0966C04FB3E21F80C998788B /* SettingsViewInput.swift */; };
 		B3C443643D68FDAC7C1C0F30 /* DetailInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3301C7A3C0C8F84E4BB94B /* DetailInteractorInput.swift */; };
 		B58F00325D5F8197EE99118C /* MapRouterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A375767CE67496F8D54FD2A6 /* MapRouterInput.swift */; };
+		BC7D878E0138C36D47DEDF00 /* SettingsViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635B81AA2E82711C696285CC /* SettingsViewOutput.swift */; };
 		BCEF2487524C2BA6E02D5530 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6FF401DF775A548FA8C865 /* LoginInteractor.swift */; };
 		BF4B055FE8A2C2CA27FB56F6 /* MapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6413EEEBF1CA9DF6736500 /* MapPresenter.swift */; };
 		C069B2AFB0C1970A3CF2BA13 /* ChoiceInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C81C01A63AEA8F81629312 /* ChoiceInteractorInput.swift */; };
@@ -102,6 +114,7 @@
 		EDD182FEA107B6FAEA9EE77A /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA96B557235BD5707D79A58 /* MainInteractor.swift */; };
 		F219CC16BC2DB04301C7D3DF /* MapModuleInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0140116E9B018EE5AEA2DD5A /* MapModuleInput.swift */; };
 		F990F54A828619F92EF8800B /* DetailInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2CE2C96FC354B2CBD0C96E /* DetailInteractorOutput.swift */; };
+		FBDCD0ED2A23894D05D52E82 /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187742D81D25047F6BFEDF53 /* SettingsRouter.swift */; };
 		FC2559F846A5602606AB9C5A /* DetailRouterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD5AD30F84B8470DDF810D2 /* DetailRouterInput.swift */; };
 		FD669201FA37F9E17FFC9275 /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F13C0BEA4522DE7AA69643 /* DetailPresenter.swift */; };
 		FF9EE9BE9857919A0C1F3EBF /* MainInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420B6D7ADA47B0478437010A /* MainInteractorInput.swift */; };
@@ -119,9 +132,14 @@
 
 /* Begin PBXFileReference section */
 		0140116E9B018EE5AEA2DD5A /* MapModuleInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MapModuleInput.swift; sourceTree = "<group>"; };
+		0443400310C57717DBEBD458 /* SettingsModuleInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SettingsModuleInput.swift; sourceTree = "<group>"; };
 		07D47CE34BCF92837BB8FF65 /* DetailRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DetailRouter.swift; sourceTree = "<group>"; };
+		0966C04FB3E21F80C998788B /* SettingsViewInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SettingsViewInput.swift; sourceTree = "<group>"; };
 		09E776268501D398524EFE6C /* MapConfigurator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MapConfigurator.swift; sourceTree = "<group>"; };
+		0FBEC099C22C7E95DD737F08 /* SettingsViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		166C05394A188889D5AFFA09 /* MapViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		187742D81D25047F6BFEDF53 /* SettingsRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
+		19376506ED0FE8773A45A12E /* SettingsInteractorOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SettingsInteractorOutput.swift; sourceTree = "<group>"; };
 		1AFDC7D29F1620DCBB448E15 /* LoginRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
 		1C58A2004643232061D98469 /* Pods_TestViperFirebase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestViperFirebase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		21C81C01A63AEA8F81629312 /* ChoiceInteractorInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChoiceInteractorInput.swift; sourceTree = "<group>"; };
@@ -129,8 +147,11 @@
 		23638881BD2ED7EBFF989739 /* DetailInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DetailInteractor.swift; sourceTree = "<group>"; };
 		2651D4C78C44083FF459D662 /* RegistrationInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RegistrationInteractor.swift; sourceTree = "<group>"; };
 		27223F3B31631FDAFD2572B4 /* LoginViewInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoginViewInput.swift; sourceTree = "<group>"; };
+		27564A1F99E64AB30C426DC0 /* SettingsInteractorInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SettingsInteractorInput.swift; sourceTree = "<group>"; };
 		29BDB5E26F35552BC73088F7 /* Pods_TestViperFirebaseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestViperFirebaseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CB7EE5BB9955197FBBA58ED /* SettingsInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
 		2E1122FB793B45DA67CBF622 /* RegistrationRouterInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RegistrationRouterInput.swift; sourceTree = "<group>"; };
+		2F7CDEF798644B3B8EDAC3D5 /* SettingsPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
 		3213C9BD93BD3A4F8A58ADD2 /* RegistrationViewInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RegistrationViewInput.swift; sourceTree = "<group>"; };
 		3F4FE6026F8AB5416FEEB8DA /* MainViewInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainViewInput.swift; sourceTree = "<group>"; };
 		419D68A43C03C46EB684EDB7 /* ChoiceInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChoiceInteractor.swift; sourceTree = "<group>"; };
@@ -147,10 +168,12 @@
 		5AFCC5085185EA0BE75B95F8 /* RegistrationConfigurator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RegistrationConfigurator.swift; sourceTree = "<group>"; };
 		5EC0B483BACA7CD94F794E3A /* MainRouterInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainRouterInput.swift; sourceTree = "<group>"; };
 		6021E7982496061F521E060F /* AddPlaceViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AddPlaceViewController.swift; sourceTree = "<group>"; };
+		635B81AA2E82711C696285CC /* SettingsViewOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SettingsViewOutput.swift; sourceTree = "<group>"; };
 		64D9FA1D8D860AC4155EE6F2 /* RegistrationInteractorInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RegistrationInteractorInput.swift; sourceTree = "<group>"; };
 		6705A1581DD7A9DF50802871 /* ChoiceModuleInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChoiceModuleInput.swift; sourceTree = "<group>"; };
 		6833E4E545E6A40964BD3EBC /* LoginViewOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoginViewOutput.swift; sourceTree = "<group>"; };
 		6A6FF401DF775A548FA8C865 /* LoginInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		6E3125A6244BB6680055F073 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		6E38FDAD243DB2CD0073C5D2 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		6E685B3C241BA8CA00F72415 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6E75119C240CFB08004DC847 /* TestViperFirebase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestViperFirebase.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -186,6 +209,7 @@
 		95D631852CA8EDD5154FA17D /* AddPlacePresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AddPlacePresenter.swift; sourceTree = "<group>"; };
 		99C35A174FD90D0D7D1ABDAF /* Pods-TestViperFirebaseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestViperFirebaseTests.release.xcconfig"; path = "Target Support Files/Pods-TestViperFirebaseTests/Pods-TestViperFirebaseTests.release.xcconfig"; sourceTree = "<group>"; };
 		9A0EE0E58874A0867A60C2C7 /* Pods-TestViperFirebase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestViperFirebase.release.xcconfig"; path = "Target Support Files/Pods-TestViperFirebase/Pods-TestViperFirebase.release.xcconfig"; sourceTree = "<group>"; };
+		9B6EFA601E05F0EC74FE2226 /* SettingsInitializer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SettingsInitializer.swift; sourceTree = "<group>"; };
 		9C3301C7A3C0C8F84E4BB94B /* DetailInteractorInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DetailInteractorInput.swift; sourceTree = "<group>"; };
 		9D43D1B3652141C002ECC555 /* LoginInteractorInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoginInteractorInput.swift; sourceTree = "<group>"; };
 		A05950E128030C838FEB9F36 /* AddPlaceViewOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AddPlaceViewOutput.swift; sourceTree = "<group>"; };
@@ -198,12 +222,14 @@
 		B4E6E6AF1CA1C11348469F9B /* ChoiceInitializer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChoiceInitializer.swift; sourceTree = "<group>"; };
 		B5448C65517BFA06B429EEFE /* ChoiceViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChoiceViewController.swift; sourceTree = "<group>"; };
 		B78DFEA126B02A5F5B7D9073 /* ChoiceRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChoiceRouter.swift; sourceTree = "<group>"; };
+		B79D159332E363FB7E0E37F2 /* SettingsRouterInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SettingsRouterInput.swift; sourceTree = "<group>"; };
 		B7E1B2CFE9BED396D8A1AC22 /* AddPlaceRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AddPlaceRouter.swift; sourceTree = "<group>"; };
 		BA6413EEEBF1CA9DF6736500 /* MapPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MapPresenter.swift; sourceTree = "<group>"; };
 		C3BB7077353AFBA3660FEE27 /* LoginModuleInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoginModuleInput.swift; sourceTree = "<group>"; };
 		C42CB466DB626A999D005E37 /* AddPlaceInteractorOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AddPlaceInteractorOutput.swift; sourceTree = "<group>"; };
 		C8DC32A24CE1B35207FD6697 /* RegistrationInitializer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RegistrationInitializer.swift; sourceTree = "<group>"; };
 		CDED3947E7CE45541EFF04F6 /* RegistrationModuleInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RegistrationModuleInput.swift; sourceTree = "<group>"; };
+		D1FE3109AF3E5CB86A5E2565 /* SettingsConfigurator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SettingsConfigurator.swift; sourceTree = "<group>"; };
 		D2A6A38EB306D5284C319706 /* ChoiceConfigurator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChoiceConfigurator.swift; sourceTree = "<group>"; };
 		D4C9348CB2BBFE63171E4F47 /* ChoicePresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChoicePresenter.swift; sourceTree = "<group>"; };
 		D67DB03B261CBD9AD939FF6F /* MapInitializer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MapInitializer.swift; sourceTree = "<group>"; };
@@ -303,6 +329,25 @@
 				23638881BD2ED7EBFF989739 /* DetailInteractor.swift */,
 			);
 			path = Interactor;
+			sourceTree = "<group>";
+		};
+		235D1561353F95B1C14B081E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0966C04FB3E21F80C998788B /* SettingsViewInput.swift */,
+				635B81AA2E82711C696285CC /* SettingsViewOutput.swift */,
+				0FBEC099C22C7E95DD737F08 /* SettingsViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		266466E6B55A2C163C8BC6FB /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				0443400310C57717DBEBD458 /* SettingsModuleInput.swift */,
+				2F7CDEF798644B3B8EDAC3D5 /* SettingsPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		2FA6086C86527EDF4F5CEF75 /* Configurator */ = {
@@ -419,6 +464,14 @@
 			path = Interactor;
 			sourceTree = "<group>";
 		};
+		6E3125A5244BB62B0055F073 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				6E3125A6244BB6680055F073 /* Constants.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		6E38FDAC243DB2180073C5D2 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -451,6 +504,7 @@
 		6E75119E240CFB08004DC847 /* TestViperFirebase */ = {
 			isa = PBXGroup;
 			children = (
+				6E3125A5244BB62B0055F073 /* Helpers */,
 				6E38FDAC243DB2180073C5D2 /* Extensions */,
 				6E7511C4240D002D004DC847 /* Services */,
 				6E7511C3240CFFF1004DC847 /* Models */,
@@ -524,6 +578,7 @@
 		72F54ED489EB35BF2F97942F /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				788999FD38743155ECCD9BB5 /* Settings */,
 				D6683588F7732F7359D633C4 /* Detail */,
 				0342CB20639DDA9BCCD17AD9 /* Choice */,
 				70949C9B77371F8D00D73C36 /* Registration */,
@@ -533,6 +588,18 @@
 				95A9EE74AD00D75FDFDDA1ED /* Map */,
 			);
 			path = Modules;
+			sourceTree = "<group>";
+		};
+		788999FD38743155ECCD9BB5 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				235D1561353F95B1C14B081E /* View */,
+				266466E6B55A2C163C8BC6FB /* Presenter */,
+				F9658E901163DECE9D80E35E /* Interactor */,
+				856A912322C32F979128B1E9 /* Router */,
+				FDE073A0AB38040F01743176 /* Configurator */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		793C4F7A70230FA61874B185 /* Presenter */ = {
@@ -563,6 +630,15 @@
 				79EF97B601FC0F26D3E53694 /* Configurator */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		856A912322C32F979128B1E9 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				B79D159332E363FB7E0E37F2 /* SettingsRouterInput.swift */,
+				187742D81D25047F6BFEDF53 /* SettingsRouter.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 		8D7D8B364D90CDD515CA57C2 /* AddPlace */ = {
@@ -782,6 +858,25 @@
 			path = Configurator;
 			sourceTree = "<group>";
 		};
+		F9658E901163DECE9D80E35E /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				27564A1F99E64AB30C426DC0 /* SettingsInteractorInput.swift */,
+				19376506ED0FE8773A45A12E /* SettingsInteractorOutput.swift */,
+				2CB7EE5BB9955197FBBA58ED /* SettingsInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		FDE073A0AB38040F01743176 /* Configurator */ = {
+			isa = PBXGroup;
+			children = (
+				D1FE3109AF3E5CB86A5E2565 /* SettingsConfigurator.swift */,
+				9B6EFA601E05F0EC74FE2226 /* SettingsInitializer.swift */,
+			);
+			path = Configurator;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -958,6 +1053,7 @@
 				D64998CC96FCB95033E26865 /* MainViewOutput.swift in Sources */,
 				272B6BD8893BB970A1AC5344 /* MainViewController.swift in Sources */,
 				D93E4B2E151C67887239C546 /* MainModuleInput.swift in Sources */,
+				6E3125A7244BB6680055F073 /* Constants.swift in Sources */,
 				81851F44986AC6BF85C156C0 /* MainPresenter.swift in Sources */,
 				FF9EE9BE9857919A0C1F3EBF /* MainInteractorInput.swift in Sources */,
 				6E7511C8240D00C7004DC847 /* DataManager.swift in Sources */,
@@ -1042,6 +1138,18 @@
 				5F56993BAABADB240498A9C6 /* DetailRouter.swift in Sources */,
 				D20A9AC8427AAC781C849B37 /* DetailConfigurator.swift in Sources */,
 				3B983E28C7E372ED5949FC95 /* DetailInitializer.swift in Sources */,
+				AF6D002BB62E29E8868F3BA2 /* SettingsViewInput.swift in Sources */,
+				BC7D878E0138C36D47DEDF00 /* SettingsViewOutput.swift in Sources */,
+				4FD161DFDD494308E94A3BCB /* SettingsViewController.swift in Sources */,
+				60363A3CDB8BC52525314E38 /* SettingsModuleInput.swift in Sources */,
+				5AD2AC879054D2E004802BAA /* SettingsPresenter.swift in Sources */,
+				37B6B0E307598A07C6B6666E /* SettingsInteractorInput.swift in Sources */,
+				8DCD9983CC593BF9D35FD2AA /* SettingsInteractorOutput.swift in Sources */,
+				51C3A5A571758C8687314962 /* SettingsInteractor.swift in Sources */,
+				A594B628E8F1FFD8483D8078 /* SettingsRouterInput.swift in Sources */,
+				FBDCD0ED2A23894D05D52E82 /* SettingsRouter.swift in Sources */,
+				69D212DBC5BBC8ABC4D71E8D /* SettingsConfigurator.swift in Sources */,
+				5933D17FB1BC553E8725A943 /* SettingsInitializer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

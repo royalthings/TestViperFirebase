@@ -17,14 +17,16 @@ class Place: NSObject, MKAnnotation {
    let placeId: String?
    let userId: String?
    let isVisit: Bool
+   let city: String
    
-   init(title: String?, discipline: String?, coordinate: CLLocationCoordinate2D, placeId: String, userId: String, isVisit: Bool) {
+   init(title: String?, discipline: String?, coordinate: CLLocationCoordinate2D, placeId: String, userId: String, isVisit: Bool, city: String) {
       self.title = title
       self.discipline = discipline
       self.coordinate = coordinate
       self.placeId = placeId
       self.userId = userId
       self.isVisit = isVisit
+      self.city = city
    }
    
    func mapItem() -> MKMapItem {

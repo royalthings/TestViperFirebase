@@ -11,8 +11,8 @@ class AddPlaceInteractor: AddPlaceInteractorInput {
    weak var output: AddPlaceInteractorOutput!
    var dataManager: DataManagerProtocol!
    
-   func addNewPlace(title: String, discipline: String, latitude: String, longitude: String) {
-      dataManager.addNewPlace(title: title, discipline: discipline, latitude: latitude, longitude: longitude) { (isAdded) in
+   func addNewPlace(title: String, discipline: String, latitude: String, longitude: String, city: String) {
+      dataManager.addNewPlace(title: title, discipline: discipline, latitude: latitude, longitude: longitude, city: city) { (isAdded) in
          self.output.passPlaceToShowMainSceene(isAdded)
       }
    }

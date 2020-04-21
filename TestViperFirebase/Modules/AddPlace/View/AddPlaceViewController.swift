@@ -14,12 +14,11 @@ class AddPlaceViewController: UIViewController, AddPlaceViewInput {
    @IBOutlet weak var disciplineTextField: UITextField!
    @IBOutlet weak var latitudeTextField: UITextField!
    @IBOutlet weak var longitudeTextField: UITextField!
+   @IBOutlet weak var cityTextField: UITextField!
    @IBOutlet weak var addButton: UIButton!
    
-   @IBOutlet weak var dropDownMenu: UIPickerView!
-   
-   let listMenu = ["Cafe", "Cinema", "Magazine", "Museum", "Park", "Play park", "Restaurant", "Statue", "Theatre"]
-   
+   @IBOutlet weak var placeDropDownMenu: UIPickerView!
+   @IBOutlet weak var cityDropDownMenu: UIPickerView!
    
    var output: AddPlaceViewOutput!
    var latitude: String?
@@ -31,7 +30,8 @@ class AddPlaceViewController: UIViewController, AddPlaceViewInput {
       output.viewIsReady()
       
       addButton.layer.cornerRadius = 10
-      dropDownMenu.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+      placeDropDownMenu.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+      cityDropDownMenu.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
       
       latitudeTextField.text = latitude
       longitudeTextField.text = longitude
@@ -51,7 +51,8 @@ class AddPlaceViewController: UIViewController, AddPlaceViewInput {
          let discipline = disciplineTextField.text,
          let latitude = latitudeTextField.text,
          let longitude = longitudeTextField.text,
-         title != "", discipline != "", latitude != "", longitude != "" else {
+         let city = cityTextField.text,
+         title != "", discipline != "", latitude != "", longitude != "", city != "" else {
             showError(title: "Error", message: "Еnter correct data")
             return
       }
@@ -65,7 +66,7 @@ class AddPlaceViewController: UIViewController, AddPlaceViewInput {
       let filteredLongitude = String.filteredCharacters(enteredText: longitude)
       
       if title == filteredTitle, latitude == filteredLatitude, longitude == filteredLongitude {
-         output.addNewPlace(title: title, discipline: discipline, latitude: latitude, longitude: longitude)
+         output.addNewPlace(title: title, discipline: discipline, latitude: latitude, longitude: longitude, city: city)
       } else {
          showError(title: "Error", message: "You have entered the wrong characters.")
       }
@@ -91,25 +92,41 @@ extension AddPlaceViewController: UIPickerViewDelegate, UIPickerViewDataSource {
    }
    
    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-      return listMenu.count
+      if pickerView == placeDropDownMenu {
+         return Constants.placeListMenu.count
+      } else {
+         return Constants.cityListMenu.count
+      }
    }
    
    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
       view.endEditing(true)
-      return listMenu[row]
+      if pickerView == placeDropDownMenu {
+         return Constants.placeListMenu[row]
+      } else {
+         return Constants.cityListMenu[row]
+      }
    }
    
    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-      disciplineTextField.text = listMenu[row]
-      dropDownMenu.isHidden = true
+      if pickerView == placeDropDownMenu {
+         disciplineTextField.text = Constants.placeListMenu[row]
+         placeDropDownMenu.isHidden = true
+      } else {
+         cityTextField.text = Constants.cityListMenu[row]
+         cityDropDownMenu.isHidden = true
+      }
    }
 }
 
 extension AddPlaceViewController: UITextFieldDelegate {
    func textFieldDidBeginEditing(_ textField: UITextField) {
       if textField == disciplineTextField {
-         dropDownMenu.isHidden = false
+         placeDropDownMenu.isHidden = false
          disciplineTextField.endEditing(true)
+      } else if textField == cityTextField {
+         cityDropDownMenu.isHidden = false
+         cityTextField.endEditing(true)
       }
    }
 }

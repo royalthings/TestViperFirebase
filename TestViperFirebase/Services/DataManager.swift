@@ -17,17 +17,18 @@ protocol DataManagerProtocol {
    func getPlaces(handler: @escaping (_ returnedPlaces: [Place]) -> ())
    func getUserPlaces(handler: @escaping (_ returnedPlaces: [Place]) -> ())
    
-   func addNewPlace(title: String, discipline: String, latitude: String, longitude: String, handler: @escaping (_ isAdded: Bool) -> ())
+   func addNewPlace(title: String, discipline: String, latitude: String, longitude: String, city: String, handler: @escaping (_ isAdded: Bool) -> ())
    func delete(withId id: String, handler: @escaping (_ isDelete: Bool) -> ())
    func selectAsVisit(withId id: String, handler: @escaping (_ isSelect: Bool) -> ())
    func deselectAsVisit(withId id: String, handler: @escaping (_ isSelect: Bool) -> ())
    
    func login(email: String, password: String, handler: @escaping (_ userName: String) -> ())
-   func registration(email: String, name: String, password: String, handler: @escaping (_ resultLogin: Bool) -> ())
+   func registration(email: String, name: String, password: String, city: String, handler: @escaping (_ resultLogin: Bool) -> ())
    func userIsAlreadyLogged(handler: @escaping (_ IsAlreadyLogged: Bool, _ username: String) -> ())
    func signOut(handler: @escaping (Bool) -> ())
    
    func obtainUserName(email: String?, handler: @escaping (_ returnedUserName: String) -> ())
+   func obtainUserCity(email: String?, handler: @escaping (_ returnedUserName: String) -> ())
 }
 
 let DB_BASE = Database.database().reference()
@@ -64,10 +65,11 @@ class DataManager: DataManagerProtocol {
             let placeId = place.childSnapshot(forPath: "placeId").value as! String
             let userId = place.childSnapshot(forPath: "userId").value as! String
             let isVisit = place.childSnapshot(forPath: "isVisit").value as! Bool
+            let city = place.childSnapshot(forPath: "city").value as! String
             
             let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
             
-            let place = Place(title: title, discipline: discipline, coordinate: coordinate, placeId: placeId, userId: userId, isVisit: isVisit)
+            let place = Place(title: title, discipline: discipline, coordinate: coordinate, placeId: placeId, userId: userId, isVisit: isVisit, city: city)
             if userId == Auth.auth().currentUser?.uid || userId == "0" {
                placeArray.append(place)
             }
@@ -89,10 +91,11 @@ class DataManager: DataManagerProtocol {
             let placeId = place.childSnapshot(forPath: "placeId").value as! String
             let userId = place.childSnapshot(forPath: "userId").value as! String
             let isVisit = place.childSnapshot(forPath: "isVisit").value as! Bool
+            let city = place.childSnapshot(forPath: "city").value as! String
             
             let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
             
-            let place = Place(title: title, discipline: discipline, coordinate: coordinate, placeId: placeId, userId: userId, isVisit: isVisit)
+            let place = Place(title: title, discipline: discipline, coordinate: coordinate, placeId: placeId, userId: userId, isVisit: isVisit, city: city)
             if userId == Auth.auth().currentUser?.uid {
                placeArray.append(place)
             }
@@ -114,7 +117,7 @@ class DataManager: DataManagerProtocol {
       }
    }
    
-   func addNewPlace(title: String, discipline: String, latitude: String, longitude: String, handler: @escaping (_ isAdded: Bool) -> ()) {
+   func addNewPlace(title: String, discipline: String, latitude: String, longitude: String, city: String, handler: @escaping (_ isAdded: Bool) -> ()) {
       
       guard let latitudeFloat = Float(latitude) else { return }
       guard let longitudeFloat = Float(longitude) else { return }
@@ -123,7 +126,7 @@ class DataManager: DataManagerProtocol {
       let userId = Auth.auth().currentUser?.uid
       let isVisit = false
       
-      let plase: Dictionary<String, Any> = ["title": title, "discipline": discipline, "latitude": latitudeFloat, "longitude": longitudeFloat, "placeId": newPlace.key as Any, "userId": userId as Any, "isVisit": isVisit]
+      let plase: Dictionary<String, Any> = ["title": title, "discipline": discipline, "latitude": latitudeFloat, "longitude": longitudeFloat, "placeId": newPlace.key as Any, "userId": userId as Any, "isVisit": isVisit, "city": city]
       
       newPlace.setValue(plase)
       
@@ -160,7 +163,7 @@ class DataManager: DataManagerProtocol {
       }
    }
    
-   func registration(email: String, name: String, password: String, handler: @escaping (Bool) -> ()) {
+   func registration(email: String, name: String, password: String, city: String, handler: @escaping (Bool) -> ()) {
       
       Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
          
@@ -171,7 +174,7 @@ class DataManager: DataManagerProtocol {
          }
          if user != nil {
             let userId = self.REF_USER.childByAutoId()
-            let user: Dictionary<String, Any> = ["email": email, "name": name, "password": password]
+            let user: Dictionary<String, Any> = ["email": email, "name": name, "password": password, "city": city]
             
 //            let test = User(email: email, name: name, password: password)
             userId.setValue(user)
@@ -217,4 +220,21 @@ class DataManager: DataManagerProtocol {
          handler(userName)
       }
    }
+   
+   func obtainUserCity(email: String?, handler: @escaping (_ returnedUserName: String) -> ()) {
+      var userCity = ""
+      REF_USER.observeSingleEvent(of: .value) { (userSnapshot) in
+         
+         guard let userSnapshot = userSnapshot.children.allObjects as? [DataSnapshot] else { return }
+         for user in userSnapshot {
+            let city = user.childSnapshot(forPath: "city").value as! String
+            let userEmail = user.childSnapshot(forPath: "email").value as! String
+            if userEmail == email {
+               userCity = city
+            }
+         }
+         handler(userCity)
+      }
+   }
+
 }

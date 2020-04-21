@@ -1,12 +1,12 @@
 //
-//  RegistrationRegistrationViewOutput.swift
+//  SettingsSettingsViewOutput.swift
 //  TestViperFirebase
 //
-//  Created by agadu on 06/03/2020.
+//  Created by agadu on 19/04/2020.
 //  Copyright © 2020 TestViperFirebase. All rights reserved.
 //
 
-protocol RegistrationViewOutput {
+protocol SettingsViewOutput {
    
    /**
     @author agadu
@@ -16,6 +16,4 @@ protocol RegistrationViewOutput {
    func viewIsReady()
    
    func dismiss()
-   
-   func userRegistration(email: String, name: String, password: String, city: String)
 }

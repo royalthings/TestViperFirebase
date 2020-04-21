@@ -21,8 +21,8 @@ class AddPlacePresenter: AddPlaceModuleInput, AddPlaceViewOutput, AddPlaceIntera
       router.dismiss()
    }
    
-   func addNewPlace(title: String, discipline: String, latitude: String, longitude: String) {
-      interactor.addNewPlace(title: title, discipline: discipline, latitude: latitude, longitude: longitude)
+   func addNewPlace(title: String, discipline: String, latitude: String, longitude: String, city: String) {
+      interactor.addNewPlace(title: title, discipline: discipline, latitude: latitude, longitude: longitude, city: city)
    }
    
    func passPlaceToShowMainSceene(_ isAdded: Bool) {

@@ -20,8 +20,8 @@ class RegistrationPresenter: RegistrationModuleInput, RegistrationViewOutput, Re
       router.dismiss()
    }
    
-   func userRegistration(email: String, name: String, password: String) {
-      interactor.userRegistration(email: email, name: name, password: password)
+   func userRegistration(email: String, name: String, password: String, city: String) {
+      interactor.userRegistration(email: email, name: name, password: password, city: city)
    }
    
    func userRegistered(_ isRegistered: Bool) {

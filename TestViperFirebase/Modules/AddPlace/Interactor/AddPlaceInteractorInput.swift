@@ -10,6 +10,6 @@ import Foundation
 
 protocol AddPlaceInteractorInput {
    
-   func addNewPlace(title: String, discipline: String, latitude: String, longitude: String)
+   func addNewPlace(title: String, discipline: String, latitude: String, longitude: String, city: String)
 
 }

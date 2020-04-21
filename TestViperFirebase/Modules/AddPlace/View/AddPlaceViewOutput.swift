@@ -17,7 +17,7 @@ protocol AddPlaceViewOutput {
    
    func viewIsReady()
    
-   func addNewPlace(title: String, discipline: String, latitude: String, longitude: String)
+   func addNewPlace(title: String, discipline: String, latitude: String, longitude: String, city: String)
    
    func dismiss()
    
