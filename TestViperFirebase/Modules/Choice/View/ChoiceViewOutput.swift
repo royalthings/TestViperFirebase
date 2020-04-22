@@ -22,5 +22,5 @@ protocol ChoiceViewOutput {
    
    func goToMapScreen()
    
-   func obtainUserName(email: String?)
+   func obtainUserData(email: String?)
 }

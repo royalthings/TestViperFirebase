@@ -17,7 +17,7 @@ protocol ChoiceViewInput: class {
    
    func showError(title: String, message: String)
    
-   func obtainUserName()
+   func obtainUserData()
    
-   func saveName(userName: String)
+   func saveData(userName: String, userCity: String)
 }

@@ -7,12 +7,18 @@
 //
 
 class SettingsRouter: SettingsRouterInput {
-   
+
    weak var viewController: SettingsViewController!
    
    func dismiss() {
       viewController.dismiss(animated: true, completion: nil)
    }
    
+   func goToSelectCityScreen() {
+      let configurator = SelectCityModuleConfigurator()
+      let (moduleView, _) = configurator.moduleViewAndInput()
+      
+      viewController.present(moduleView, animated: true, completion: nil)
+   }
    
 }

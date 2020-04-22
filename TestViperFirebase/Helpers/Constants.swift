@@ -13,5 +13,11 @@ public struct Constants {
    static let placeListMenu = ["Cafe", "Cinema", "Magazine", "Museum", "Park", "Play park", "Restaurant", "Statue", "Theatre"]
    
    static let cityListMenu = ["Cherkasy", "Chernihiv", "Chernivtsi", "Dnipro", "Donetsk", "Ivano-Frankivsk", "Kharkov", "Kherson", "Khmelnitsky", "Kiev", "Kropyvnytskyi", "Lugansk", "Lutsk", "Lviv", "Nikolaev", "Odessa", "Poltava", "Rivne", "Simferopol", "Sumy", "Ternopil", "Uzhgorod", "Vinnitsa", "Zaporozhye", "Zhitomir"]
+   
+   struct Keys {
+       
+       static let userCity = "userCity"
+       
+   }
 
 }

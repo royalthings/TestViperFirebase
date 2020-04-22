@@ -28,4 +28,8 @@ class SettingsPresenter: SettingsModuleInput, SettingsViewOutput, SettingsIntera
       router.dismiss()
    }
    
+   func goToSelectCityScreen() {
+      router.goToSelectCityScreen()
+   }
+   
 }

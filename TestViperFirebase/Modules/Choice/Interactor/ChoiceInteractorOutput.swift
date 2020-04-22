@@ -12,6 +12,6 @@ protocol ChoiceInteractorOutput: class {
    
    func isSignOut(_ isSignOut: Bool)
    
-   func saveName(userName: String)
+   func saveData(userName: String, userCity: String)
 
 }

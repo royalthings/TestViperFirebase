@@ -12,5 +12,5 @@ protocol ChoiceInteractorInput {
    
    func signOut()
    
-   func obtainUserName(email: String?)
+   func obtainUserData(email: String?)
 }

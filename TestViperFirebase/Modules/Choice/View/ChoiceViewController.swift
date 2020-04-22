@@ -11,7 +11,7 @@ import Firebase
 import FirebaseAuth
 
 class ChoiceViewController: UIViewController, ChoiceViewInput {
-
+   
    //MARK: - Outlets
    @IBOutlet weak var showListOfPlacesButton: UIButton!
    @IBOutlet weak var showMapButton: UIButton!
@@ -28,8 +28,8 @@ class ChoiceViewController: UIViewController, ChoiceViewInput {
       
       showListOfPlacesButton.layer.cornerRadius = 10
       showMapButton.layer.cornerRadius = 10
-      
-      obtainUserName()
+
+      obtainUserData()
    }
    
    
@@ -44,17 +44,26 @@ class ChoiceViewController: UIViewController, ChoiceViewInput {
       self.present(alertController, animated: true, completion: nil)
    }
    
-   func obtainUserName() {
-      output.obtainUserName(email: email)
+   func obtainUserData() {
+      output.obtainUserData(email: email)
    }
    
-   func saveName(userName: String) {
+   func saveData(userName: String, userCity: String) {
       helloLabel.text = "Hello, " + userName + "!"
+      setupDefaultKeysIfNeeded(userCity: userCity)
+      
+   }
+   
+   private func setupDefaultKeysIfNeeded(userCity: String) {
+      if UserDefaults.standard.string(forKey: Constants.Keys.userCity) == nil {
+         UserDefaults.standard.set(userCity, forKey: Constants.Keys.userCity)
+      }
    }
    
    
    //MARK: - Actions
    @IBAction func loguotAction(_ sender: Any) {
+      UserDefaults.standard.removeObject(forKey: Constants.Keys.userCity)
       output.signOut()
    }
    

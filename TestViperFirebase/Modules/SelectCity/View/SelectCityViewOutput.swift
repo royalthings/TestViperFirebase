@@ -1,12 +1,12 @@
 //
-//  SettingsSettingsViewOutput.swift
+//  SelectCitySelectCityViewOutput.swift
 //  TestViperFirebase
 //
-//  Created by agadu on 19/04/2020.
+//  Created by agadu on 22/04/2020.
 //  Copyright © 2020 TestViperFirebase. All rights reserved.
 //
 
-protocol SettingsViewOutput {
+protocol SelectCityViewOutput {
    
    /**
     @author agadu
@@ -16,8 +16,4 @@ protocol SettingsViewOutput {
    func viewIsReady()
    
    func dismiss()
-   
-   func obtainUserData(email: String?)
-   
-   func goToSelectCityScreen()
 }

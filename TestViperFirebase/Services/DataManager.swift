@@ -71,7 +71,9 @@ class DataManager: DataManagerProtocol {
             
             let place = Place(title: title, discipline: discipline, coordinate: coordinate, placeId: placeId, userId: userId, isVisit: isVisit, city: city)
             if userId == Auth.auth().currentUser?.uid || userId == "0" {
-               placeArray.append(place)
+               if city == UserDefaults.standard.string(forKey: Constants.Keys.userCity) {
+                  placeArray.append(place)
+               }
             }
          }
          handler(placeArray)
@@ -97,7 +99,9 @@ class DataManager: DataManagerProtocol {
             
             let place = Place(title: title, discipline: discipline, coordinate: coordinate, placeId: placeId, userId: userId, isVisit: isVisit, city: city)
             if userId == Auth.auth().currentUser?.uid {
-               placeArray.append(place)
+               if city == UserDefaults.standard.string(forKey: Constants.Keys.userCity) {
+                  placeArray.append(place)
+               }
             }
          }
          handler(placeArray)

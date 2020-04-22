@@ -25,8 +25,12 @@ class SettingsViewController: UIViewController, SettingsViewInput {
       super.viewDidLoad()
       output.viewIsReady()
       obtainUserData()
-      
+
       settingsTableView.tableFooterView = UIView(frame: .zero)
+   }
+   override func viewWillAppear(_ animated: Bool) {
+      super.viewWillAppear(animated)
+      settingsTableView.reloadData()
    }
    
    // MARK: SettingsViewInput
@@ -68,12 +72,14 @@ extension SettingsViewController: UITableViewDataSource {
    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       if indexPath.section == 0 {
          guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? UserCell else { return UITableViewCell() }
+         cell.selectionStyle = .none
          cell.nameLabel.text = userName
          cell.emailLabel.text = email
          return cell
       } else {
          guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsCell", for: indexPath) as? SettingsCell else { return UITableViewCell() }
-         cell.cityLabel.text = userCity
+         cell.selectionStyle = .none
+         cell.cityLabel.text = UserDefaults.standard.string(forKey: Constants.Keys.userCity)
          return cell
       }
    }
@@ -108,4 +114,13 @@ extension SettingsViewController: UITableViewDataSource {
 
 extension SettingsViewController: UITableViewDelegate {
    
+   func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+      return true
+   }
+   
+   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+      if indexPath.section == 1 {
+         output.goToSelectCityScreen()
+      }
+   }
 }
